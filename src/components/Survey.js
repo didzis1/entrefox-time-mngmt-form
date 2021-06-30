@@ -65,7 +65,7 @@ const Survey = ({
 			<Container className={classes.survey} maxWidth='md'>
 				<Box align='center'>
 					<Typography variant='h4' component='h1' gutterBottom>
-						Yrittäjän kehityskeskustelu
+						Yrittäjän ajanhallinnankysely
 					</Typography>
 				</Box>
 				<Box pt={2} pb={4} px={3} className={classes.form}>
