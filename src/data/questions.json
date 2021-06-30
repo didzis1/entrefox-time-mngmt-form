@@ -125,7 +125,7 @@
 			},
 			{
 				"title": "Miten työaikasi jakautuu normaalina työpäivänä tällä hetkellä?",
-				"rows": [
+				"columns": [
 					{
 						"text": "Ei kulu aikaa",
 						"ID": 1
@@ -147,7 +147,7 @@
 						"ID": 5
 					}
 				],
-				"columns": [
+				"rows": [
 					{
 						"text": "Asiakastyöt",
 						"ID": 1
@@ -186,7 +186,7 @@
 			},
 			{
 				"title": "Miten toivoisit työtehtäviesi jakautuvan tulevaisuudessa?",
-				"rows": [
+				"columns": [
 					{
 						"text": "Ei kulu aikaa",
 						"ID": 1
@@ -208,7 +208,7 @@
 						"ID": 5
 					}
 				],
-				"columns": [
+				"rows": [
 					{
 						"text": "Asiakastyöt",
 						"ID": 1
