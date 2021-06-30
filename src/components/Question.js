@@ -6,6 +6,7 @@ import typeComponent from '../utils'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 
+// eslint-disable-next-line no-unused-vars
 const questionsToDisplay = (first, second) => {
 	if (
 		(first === 'YES' && second === 'YES') ||
@@ -36,8 +37,6 @@ const questionsToDisplay = (first, second) => {
 		return 'first no, second maybe'
 	}
 }
-
-console.log(questionsToDisplay)
 
 const Question = ({ questions, page }) => {
 	// Render all questions on page
