@@ -14,6 +14,7 @@ const CheckBox = ({ question }) => {
 	const currentValues = getAnswerByID(currentPage, question.ID)
 
 	const handleCheckBox = (event, ID) => {
+		console.log(event)
 		const checkedBox = {
 			text: event.target.name,
 			isChecked: event.target.checked,
@@ -34,6 +35,11 @@ const CheckBox = ({ question }) => {
 							<Checkbox
 								onChange={(event) =>
 									handleCheckBox(event, choice.ID)
+								}
+								checked={
+									currentValues?.value.find(
+										(answer) => answer.ID === choice.ID
+									).isChecked || false
 								}
 								name={choice.text}
 								inputProps={{ 'aria-label': choice.text }}
