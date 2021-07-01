@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from '../../contexts/FormContext'
 import { getAnswerByID } from '../../utils'
@@ -10,17 +10,27 @@ import {
 	KeyboardDatePicker
 } from '@material-ui/pickers'
 import Box from '@material-ui/core/Box'
-// import Checkbox from '@material-ui/core/Checkbox'
-// import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 const DateField = ({ question }) => {
-	// const [checked, setChecked] = useState(false)
+	const [checked, setChecked] = useState(false)
 	const { handleInputChange } = useForm()
 
-	// const handleCheckBox = () => {
-	// 	setChecked(!checked)
-	// 	handleInputChange(question.ID, checked ? null : true)
-	// }
+	const handleSetDate = (event) => {
+		const dateToString = event.toString()
+		if (dateToString === 'Invalid Date') {
+			return handleInputChange(question.ID, '')
+		}
+		handleInputChange(question.ID, dateToString)
+	}
+
+	const resetDate = () => {
+		setChecked(!checked)
+		handleInputChange(question.ID, checked ? null : true)
+	}
+
+	const answer = getAnswerByID(question.page, question.ID)
 	return (
 		<Box my={2}>
 			<MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -29,30 +39,30 @@ const DateField = ({ question }) => {
 					variant='inline'
 					inputVariant='outlined'
 					label='Syötä päivämäärä'
+					invalidDateMessage='Väärä päivämäärä'
 					format='dd/MM/yyyy'
-					// disabled={checked}
-					value={getAnswerByID(question.page, question.ID).value}
+					value={answer.value}
+					disabled={checked}
 					InputAdornmentProps={{ position: 'start' }}
-					onChange={(event) => handleInputChange(question.ID, event)}
+					onChange={(event) => handleSetDate(event)}
 				/>
 			</MuiPickersUtilsProvider>
-
-			{/* <Box>
+			<Box mt={2}>
 				<FormControlLabel
 					control={
 						<Checkbox
 							checked={checked}
 							name='Datefield disabler'
-							onChange={() => handleCheckBox()}
+							onChange={() => resetDate()}
 							inputProps={{
-								'aria-label': 'En tiedä tarkkaa päivämäärää'
+								'aria-label': 'En halua asettaa päivämäärää'
 							}}
 							color='primary'
 						/>
 					}
-					label='En tiedä tarkkaa päivämäärää'
+					label='En halua asettaa päivämäärää'
 				/>
-			</Box> */}
+			</Box>
 		</Box>
 	)
 }
