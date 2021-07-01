@@ -3,22 +3,19 @@
 		"ID": 1,
 		"questions": [
 			{
-				"title": "Haluatko muutosta ajankäyttöösi?",
-				"description": "",
+				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin?",
+				"description": "piirakkakuvio",
 				"choices": [
 					{
-						"text": "Kyllä, haluan",
-						"condition": "YES",
+						"text": "Työ",
 						"ID": 1
 					},
 					{
-						"text": "Ehkä, olen kiinnostunut pohtimaan asiaa",
-						"condition": "MAYBE",
+						"text": "Uni",
 						"ID": 2
 					},
 					{
-						"text": "Ei, kaikki on hyvin juuri nyt",
-						"condition": "NO",
+						"text": "Muu aika",
 						"ID": 3
 					}
 				],
@@ -26,7 +23,7 @@
 				"ID": 1
 			},
 			{
-				"title": "Haluatko muutosta työtehtävien ajankäyttöösi?",
+				"title": "Haluatko muutosta ajankäyttöösi?",
 				"description": "",
 				"choices": [
 					{
@@ -54,26 +51,6 @@
 		"ID": 2,
 		"questions": [
 			{
-				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin?",
-				"description": "piirakkakuvio",
-				"choices": [
-					{
-						"text": "Työ",
-						"ID": 1
-					},
-					{
-						"text": "Uni",
-						"ID": 2
-					},
-					{
-						"text": "Muu aika",
-						"ID": 3
-					}
-				],
-				"type": "radio",
-				"ID": 3
-			},
-			{
 				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
 				"description": "",
 				"choices": [
@@ -95,13 +72,13 @@
 					}
 				],
 				"type": "radio",
-				"ID": 4
+				"ID": 3
 			},
 			{
 				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
 				"description": "",
 				"type": "date",
-				"ID": 5
+				"ID": 3.5
 			},
 			{
 				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken?",
@@ -121,7 +98,7 @@
 					}
 				],
 				"type": "radio",
-				"ID": 6
+				"ID": 4
 			},
 			{
 				"title": "Miten työaikasi jakautuu normaalina työpäivänä tällä hetkellä?",
@@ -182,7 +159,71 @@
 					}
 				],
 				"type": "tablecheckbox",
+				"ID": 5
+			},
+			{
+				"title": "Jos valitsit edellisessä kysymyksessä kohdan 'muu toiminta', kirjaa ylös, mitä se pitää sisällään.",
+				"description": "",
+				"type": "text",
+				"ID": 5.5
+			},
+			{
+				"title": "Haluatko muutosta työtehtävien ajankäyttöösi?",
+				"description": "",
+				"choices": [
+					{
+						"text": "Kyllä, haluan",
+						"condition": "YES",
+						"ID": 1
+					},
+					{
+						"text": "Ehkä, olen kiinnostunut pohtimaan asiaa",
+						"condition": "MAYBE",
+						"ID": 2
+					},
+					{
+						"text": "Ei, kaikki on hyvin juuri nyt",
+						"condition": "NO",
+						"ID": 3
+					}
+				],
+				"type": "radio",
 				"ID": 7
+			}
+		]
+	},
+	{
+	"ID": 3,
+	"questions": [
+			{
+				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
+				"description": "",
+				"choices": [
+					{
+						"text": "Lähikuukausina tai aikaisemmin",
+						"ID": 1
+					},
+					{
+						"text": "Muutaman vuoden päästä",
+						"ID": 2
+					},
+					{
+						"text": "Noin viiden vuoden kuluttua",
+						"ID": 3
+					},
+					{
+						"text": "Myöhemmin kuin viiden vuoden kuluttua",
+						"ID": 4
+					}
+				],
+				"type": "radio",
+				"ID": 8
+			},
+			{
+				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
+				"description": "",
+				"type": "date",
+				"ID": 8.5
 			},
 			{
 				"title": "Miten toivoisit työtehtäviesi jakautuvan tulevaisuudessa?",
@@ -243,37 +284,7 @@
 					}
 				],
 				"type": "tablecheckbox",
-				"ID": 8
-			},
-			{
-				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
-				"description": "",
-				"choices": [
-					{
-						"text": "Lähikuukausina tai aikaisemmin",
-						"ID": 1
-					},
-					{
-						"text": "Muutaman vuoden päästä",
-						"ID": 2
-					},
-					{
-						"text": "Noin viiden vuoden kuluttua",
-						"ID": 3
-					},
-					{
-						"text": "Myöhemmin kuin viiden vuoden kuluttua",
-						"ID": 4
-					}
-				],
-				"type": "radio",
 				"ID": 9
-			},
-			{
-				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
-				"description": "",
-				"type": "date",
-				"ID": 10
 			},
 			{
 				"title": "Millä tasolla suunnittelet ajankäyttöä työssäsi? Voit valita yhden tai useampia vaihtoehtoja.",
@@ -305,7 +316,7 @@
 					}
 				],
 				"type": "checkbox",
-				"ID": 11
+				"ID": 10
 			}
 		]
 	}
