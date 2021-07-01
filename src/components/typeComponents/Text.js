@@ -9,41 +9,26 @@ import Box from '@material-ui/core/Box'
 
 const Text = ({ question }) => {
 	const { handleInputChange } = useForm()
-
+	// console.log(question)
 	return (
-		<>
-			{question.fields.map((field) => {
-				return (
-					<Box key={field.ID} my={2}>
-						<TextField
-							name={question.ID && question.ID.toString()}
-							value={
-								getAnswerByID(question.page, question.ID).value
-							}
-							onChange={(event) =>
-								handleInputChange(
-									event.target.name,
-									event.target.value
-								)
-							}
-							rows='4'
-							variant='outlined'
-							fullWidth
-							label={field.text && field.text}
-							InputProps={{
-								multiline: true,
-								rows: 4
-							}}
-							InputLabelProps={{
-								style: {
-									fontSize: '1.1rem'
-								}
-							}}
-						/>
-					</Box>
-				)
-			})}
-		</>
+		<Box my={2}>
+			<TextField
+				name={question.ID && question.ID.toString()}
+				value={getAnswerByID(question.page, question.ID).value}
+				onChange={(event) =>
+					handleInputChange(event.target.name, event.target.value)
+				}
+				rows='4'
+				variant='outlined'
+				fullWidth
+				label={question.text}
+				InputLabelProps={{
+					style: {
+						fontSize: '1.1rem'
+					}
+				}}
+			/>
+		</Box>
 	)
 }
 

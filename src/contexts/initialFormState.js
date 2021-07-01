@@ -28,7 +28,6 @@ const initialFormState = questions.map((page) => {
 						value: new Date()
 					}
 				case 'checkbox':
-					console.log(question)
 					return {
 						id: question.ID,
 						value: question.choices.map((choice) => ({

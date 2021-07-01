@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box'
 
 const RadioButton = ({ question }) => {
 	const { handleInputChange } = useForm()
-
+	// console.log(getAnswerByID(question.page, question.ID))
 	return (
 		<Box mt={2}>
 			<RadioGroup

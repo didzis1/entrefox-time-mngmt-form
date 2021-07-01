@@ -78,7 +78,7 @@
 				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
 				"description": "",
 				"type": "date",
-				"ID": 3.5
+				"ID": 4
 			},
 			{
 				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken?",
@@ -98,7 +98,7 @@
 					}
 				],
 				"type": "radio",
-				"ID": 4
+				"ID": 5
 			},
 			{
 				"title": "Miten työaikasi jakautuu normaalina työpäivänä tällä hetkellä?",
@@ -154,18 +154,18 @@
 						"ID": 7
 					},
 					{
-						"text": "Muut toiminta",
+						"text": "Muu toiminta",
 						"ID": 8
 					}
 				],
 				"type": "tablecheckbox",
-				"ID": 5
+				"ID": 6
 			},
 			{
 				"title": "Jos valitsit edellisessä kysymyksessä kohdan 'muu toiminta', kirjaa ylös, mitä se pitää sisällään.",
 				"description": "",
 				"type": "text",
-				"ID": 5.5
+				"ID": 7
 			},
 			{
 				"title": "Haluatko muutosta työtehtävien ajankäyttöösi?",
@@ -188,7 +188,7 @@
 					}
 				],
 				"type": "radio",
-				"ID": 7
+				"ID": 8
 			}
 		]
 	},
@@ -217,13 +217,13 @@
 					}
 				],
 				"type": "radio",
-				"ID": 8
+				"ID": 9
 			},
 			{
 				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
 				"description": "",
 				"type": "date",
-				"ID": 8.5
+				"ID": 10
 			},
 			{
 				"title": "Miten toivoisit työtehtäviesi jakautuvan tulevaisuudessa?",
@@ -279,12 +279,12 @@
 						"ID": 7
 					},
 					{
-						"text": "Muut toiminta",
+						"text": "Muu toiminta",
 						"ID": 8
 					}
 				],
 				"type": "tablecheckbox",
-				"ID": 9
+				"ID": 11
 			},
 			{
 				"title": "Millä tasolla suunnittelet ajankäyttöä työssäsi? Voit valita yhden tai useampia vaihtoehtoja.",
@@ -316,7 +316,7 @@
 					}
 				],
 				"type": "checkbox",
-				"ID": 10
+				"ID": 12
 			}
 		]
 	}

@@ -12,6 +12,8 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Checkbox from '@material-ui/core/Checkbox'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
 
 const TableCheckBox = ({ question }) => {
 	const { currentPage, handleInputChange } = useForm()
@@ -43,6 +45,7 @@ const TableCheckBox = ({ question }) => {
 	}
 
 	// Handle the Checkbox rendering
+	// eslint-disable-next-line no-unused-vars
 	const renderCheckBox = (column, row) => {
 		return (
 			<Checkbox
@@ -72,11 +75,13 @@ const TableCheckBox = ({ question }) => {
 							<TableCell component='th' scope='row'>
 								{row.text}
 							</TableCell>
-							{question.columns.map((column) => (
-								<TableCell key={column.ID} align='center'>
-									{renderCheckBox(column, row)}
-								</TableCell>
-							))}
+							<RadioGroup row>
+								{question.columns.map((column) => (
+									<TableCell key={column.ID} align='center'>
+										<Radio />
+									</TableCell>
+								))}
+							</RadioGroup>
 						</TableRow>
 					))}
 				</TableBody>
