@@ -8,6 +8,7 @@ import Text from './components/typeComponents/Text'
 import DateField from './components/typeComponents/DateField'
 import CheckBox from './components/typeComponents/CheckBox'
 import TableRadioBox from './components/typeComponents/TableRadioBox'
+import PieSlider from './components/typeComponents/PieSlider'
 
 export const getAnswerByID = (questionPage, questionID) => {
 	const { formData } = useForm()
@@ -53,6 +54,8 @@ const typeComponent = (question) => {
 			return <TableRadioBox question={question} />
 		case 'checkbox':
 			return <CheckBox question={question} />
+		case 'pieslider':
+			return <PieSlider question={question} />
 		default:
 			throw new Error('Type not found...')
 	}

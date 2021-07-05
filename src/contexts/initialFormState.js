@@ -41,6 +41,17 @@ const initialFormState = questions.map((page) => {
 						id: question.ID,
 						value: []
 					}
+				case 'pieslider':
+					return {
+						id: question.ID,
+						value: question.sliders.map((slider) => {
+							return {
+								ID: slider.ID,
+								text: slider.text,
+								range: 8
+							}
+						})
+					}
 				default:
 					return {
 						id: question.ID,

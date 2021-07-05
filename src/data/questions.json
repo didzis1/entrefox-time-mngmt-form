@@ -4,8 +4,8 @@
 		"questions": [
 			{
 				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin?",
-				"description": "piirakkakuvio",
-				"choices": [
+				"description": "",
+				"sliders": [
 					{
 						"text": "Työ",
 						"ID": 1
@@ -15,11 +15,11 @@
 						"ID": 2
 					},
 					{
-						"text": "Muu aika",
+						"text": "Muu aika [esim. Perhe, harrastukset, lepo, kotityöt]",
 						"ID": 3
 					}
 				],
-				"type": "radio",
+				"type": "pieslider",
 				"ID": 1
 			},
 			{
@@ -82,8 +82,8 @@
 			},
 			{
 				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken?",
-				"description": "piirakkakuvio",
-				"choices": [
+				"description": "",
+				"sliders": [
 					{
 						"text": "Työ",
 						"ID": 1
@@ -97,7 +97,7 @@
 						"ID": 3
 					}
 				],
-				"type": "radio",
+				"type": "pieslider",
 				"ID": 5
 			},
 			{
