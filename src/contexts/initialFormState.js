@@ -36,7 +36,7 @@ const initialFormState = questions.map((page) => {
 							ID: choice.ID
 						}))
 					}
-				case 'tablecheckbox':
+				case 'tableradiobox':
 					return {
 						id: question.ID,
 						value: []

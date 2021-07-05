@@ -19,7 +19,6 @@ const FormContextProvider = ({ children }) => {
 	const [formData, setFormData] = useState(initialFormState) // Form is controlled and data is saved in state
 	const [currentPage, setCurrentPage] = useState(1) // Keeping track on visible page
 	const [formSubmitted, setFormSubmitted] = useState(false) // Value changes on form submit or 'Palaa takaisin' button
-	console.log(formData)
 	const handleSubmitChange = (event) => {
 		event.preventDefault()
 		setFormSubmitted(!formSubmitted)

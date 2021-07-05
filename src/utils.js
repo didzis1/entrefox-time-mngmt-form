@@ -7,7 +7,7 @@ import Range from './components/typeComponents/Range'
 import Text from './components/typeComponents/Text'
 import DateField from './components/typeComponents/DateField'
 import CheckBox from './components/typeComponents/CheckBox'
-import TableCheckBox from './components/typeComponents/TableCheckBox'
+import TableRadioBox from './components/typeComponents/TableRadioBox'
 
 export const getAnswerByID = (questionPage, questionID) => {
 	const { formData } = useForm()
@@ -49,8 +49,8 @@ const typeComponent = (question) => {
 			return <Text question={question} />
 		case 'date':
 			return <DateField question={question} />
-		case 'tablecheckbox':
-			return <TableCheckBox question={question} />
+		case 'tableradiobox':
+			return <TableRadioBox question={question} />
 		case 'checkbox':
 			return <CheckBox question={question} />
 		default:

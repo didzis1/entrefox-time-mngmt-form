@@ -158,7 +158,7 @@
 						"ID": 8
 					}
 				],
-				"type": "tablecheckbox",
+				"type": "tableradiobox",
 				"ID": 6
 			},
 			{
@@ -283,7 +283,7 @@
 						"ID": 8
 					}
 				],
-				"type": "tablecheckbox",
+				"type": "tableradiobox",
 				"ID": 11
 			},
 			{
