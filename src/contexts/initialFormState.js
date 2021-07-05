@@ -39,19 +39,7 @@ const initialFormState = questions.map((page) => {
 				case 'tablecheckbox':
 					return {
 						id: question.ID,
-						value: question.rows.map((column) => {
-							return {
-								ID: column.ID,
-								text: column.text,
-								choices: question.columns.map((choice) => {
-									return {
-										ID: choice.ID,
-										text: choice.text,
-										isChecked: false
-									}
-								})
-							}
-						})
+						value: []
 					}
 				default:
 					return {
