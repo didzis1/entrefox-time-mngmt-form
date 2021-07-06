@@ -3,7 +3,7 @@
 		"ID": 1,
 		"questions": [
 			{
-				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin?",
+				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin? (24h)",
 				"description": "",
 				"sliders": [
 					{
@@ -81,7 +81,7 @@
 				"ID": 4
 			},
 			{
-				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken?",
+				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken? (24h)",
 				"description": "",
 				"sliders": [
 					{
@@ -93,7 +93,7 @@
 						"ID": 2
 					},
 					{
-						"text": "Muu aika",
+						"text": "Muu aika [esim. Perhe, harrastukset, lepo, kotityöt]",
 						"ID": 3
 					}
 				],
@@ -162,12 +162,6 @@
 				"ID": 6
 			},
 			{
-				"title": "Jos valitsit edellisessä kysymyksessä kohdan 'muu toiminta', kirjaa ylös, mitä se pitää sisällään.",
-				"description": "",
-				"type": "text",
-				"ID": 7
-			},
-			{
 				"title": "Haluatko muutosta työtehtävien ajankäyttöösi?",
 				"description": "",
 				"choices": [
@@ -188,7 +182,7 @@
 					}
 				],
 				"type": "radio",
-				"ID": 8
+				"ID": 7
 			}
 		]
 	},
@@ -217,13 +211,13 @@
 					}
 				],
 				"type": "radio",
-				"ID": 9
+				"ID": 8
 			},
 			{
 				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
 				"description": "",
 				"type": "date",
-				"ID": 10
+				"ID": 9
 			},
 			{
 				"title": "Miten toivoisit työtehtäviesi jakautuvan tulevaisuudessa?",
@@ -284,7 +278,7 @@
 					}
 				],
 				"type": "tableradiobox",
-				"ID": 11
+				"ID": 10
 			},
 			{
 				"title": "Millä tasolla suunnittelet ajankäyttöä työssäsi? Voit valita yhden tai useampia vaihtoehtoja.",
@@ -316,7 +310,7 @@
 					}
 				],
 				"type": "checkbox",
-				"ID": 12
+				"ID": 11
 			}
 		]
 	}
