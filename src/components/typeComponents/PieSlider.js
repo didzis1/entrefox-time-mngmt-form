@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { getAnswerByID } from '../../utils'
 import { useForm } from '../../contexts/FormContext'
 
 // Material UI
 import Slider from '@material-ui/core/Slider'
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
 const CustomSlider = withStyles({
 	root: {
 		color: 'primary',
-		maxWidth: '400px',
 		height: 8
 	},
 	thumb: {
@@ -42,59 +41,86 @@ const CustomSlider = withStyles({
 })(Slider)
 
 const PieSlider = ({ question }) => {
-	const [max, setMaxValue] = useState(8)
-	const { currentPage, handleInputChange } = useForm()
-	const allValues = getAnswerByID(currentPage, question.ID)
+	const { handleInputChange } = useForm()
+	const initialValues = question.sliders.map((slider) => {
+		return {
+			ID: slider.ID,
+			text: slider.text,
+			range: 4
+		}
+	})
 
-	// eslint-disable-next-line no-unused-vars
-	const calculateDifference = (slider) => {
+	const [sliderValues, setSliderValues] = useState(initialValues)
+	const calculateSliderSum = (ID) => {
 		let maxValue = 0
-		allValues.value.forEach((existingSlider) => {
-			if (existingSlider.ID !== slider.ID) {
-				maxValue += existingSlider.range
+		sliderValues.forEach((value) => {
+			if (value.ID !== ID) {
+				maxValue += value.range
 			}
 		})
-		setMaxValue(24 - parseInt(maxValue))
+		return maxValue
 	}
 
-	const handleSliderChange = (newValue, slider) => {
-		const updatedValues = allValues.value.map((prevSlider) => {
-			return {
-				ID: prevSlider.ID,
-				text: prevSlider.text,
-				range: prevSlider.ID === slider.ID ? newValue : prevSlider.range
-			}
-		})
-		handleInputChange(question.ID, updatedValues)
-		calculateDifference(slider)
+	const updateSliderValues = (event, newValue, slider) => {
+		const maxTotal = 24
+		const sum = calculateSliderSum(slider.ID)
+		if (sum + newValue > maxTotal) {
+			event.preventDefault()
+			return false
+		}
+		const newSliderValue = {
+			ID: slider.ID,
+			text: slider.text,
+			range: newValue
+		}
+		setSliderValues(
+			sliderValues.map((val) =>
+				val.ID === slider.ID ? newSliderValue : val
+			)
+		)
+	}
+
+	const handleSliderDispatch = () => {
+		handleInputChange(question.ID, sliderValues)
 	}
 
 	return (
-		<Box align='center'>
+		<Box align='left' my={4}>
 			{question.sliders.map((slider) => {
 				return (
 					<Box key={slider.ID}>
-						<Typography>{slider.text}</Typography>
-						<CustomSlider
-							aria-labelledby='discrete-slider'
-							color='primary'
-							min={1}
-							max={max}
-							name={slider.ID.toString()}
-							onChange={(event, newValue) =>
-								handleSliderChange(newValue, slider)
-							}
-							value={
-								allValues?.value.find(
-									(answer) => answer.ID === slider.ID
-								).range
-							}
-						/>
-						{
-							allValues?.value.find(
-								(answer) => answer.ID === slider.ID
-							).range
-						}
+						<Grid container direction='column'>
+							<Grid item>
+								<Typography variant='h6'>
+									{slider.text}
+								</Typography>
+							</Grid>
+							<Grid item>
+								<CustomSlider
+									aria-label={slider.text}
+									valueLabelDisplay='auto'
+									value={
+										sliderValues?.find(
+											(val) => val.ID === slider.ID
+										).range
+									}
+									name={slider.ID.toString()}
+									min={0}
+									max={24}
+									onChange={(event, newValue) =>
+										updateSliderValues(
+											event,
+											newValue,
+											slider
+										)
+									}
+									onChangeCommitted={() =>
+										handleSliderDispatch()
+									}
+									color='primary'
+								/>
+							</Grid>
+						</Grid>
 					</Box>
 				)
 			})}
