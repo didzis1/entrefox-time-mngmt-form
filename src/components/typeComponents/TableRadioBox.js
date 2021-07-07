@@ -15,6 +15,7 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Radio from '@material-ui/core/Radio'
 import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 const TableRadioBox = ({ question }) => {
 	const { currentPage, handleInputChange } = useForm()
@@ -69,6 +70,13 @@ const TableRadioBox = ({ question }) => {
 		handleInputChange(question.id, updatedValues)
 	}
 
+	const removeLastFieldData = (lastField) => {
+		const filteredValues = currentValues.value.filter(
+			(previousValue) => previousValue.id !== lastField.id
+		)
+		handleInputChange(question.id, filteredValues)
+	}
+
 	const isOtherAnswered = () => {
 		const lastField = currentValues?.value.find((row) => row.id === 8)
 		if (lastField) {
@@ -93,6 +101,14 @@ const TableRadioBox = ({ question }) => {
 						variant='outlined'
 						fullWidth
 					/>
+					<Box mt={1}>
+						<Button
+							onClick={() => removeLastFieldData(lastField)}
+							color='primary'
+							variant='contained'>
+							{'Tyhjennä "Muu toiminta" rivi'}
+						</Button>
+					</Box>
 				</Box>
 			)
 		}
