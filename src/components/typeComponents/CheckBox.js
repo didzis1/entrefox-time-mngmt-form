@@ -11,34 +11,34 @@ import Box from '@material-ui/core/Box'
 
 const CheckBox = ({ question }) => {
 	const { currentPage, handleInputChange } = useForm()
-	const currentValues = getAnswerByID(currentPage, question.ID)
+	const currentValues = getAnswerByID(currentPage, question.id)
 
-	const handleCheckBox = (event, ID) => {
+	const handleCheckBox = (event, id) => {
 		console.log(event)
 		const checkedBox = {
+			id,
 			text: event.target.name,
-			isChecked: event.target.checked,
-			ID
+			isChecked: event.target.checked
 		}
 		const updatedValues = currentValues.value.map((answer) => {
-			return answer.ID === ID ? checkedBox : answer
+			return answer.id === id ? checkedBox : answer
 		})
-		handleInputChange(question.ID, updatedValues)
+		handleInputChange(question.id, updatedValues)
 	}
 	return (
 		<Box mt={2}>
 			<FormGroup>
 				{question.choices.map((choice) => (
 					<FormControlLabel
-						key={choice.ID}
+						key={choice.id}
 						control={
 							<Checkbox
 								onChange={(event) =>
-									handleCheckBox(event, choice.ID)
+									handleCheckBox(event, choice.id)
 								}
 								checked={
 									currentValues?.value.find(
-										(answer) => answer.ID === choice.ID
+										(answer) => answer.id === choice.id
 									).isChecked || false
 								}
 								name={choice.text}

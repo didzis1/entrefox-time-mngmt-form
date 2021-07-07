@@ -43,7 +43,7 @@ const Question = ({ questions, page }) => {
 	return (
 		<>
 			{questions.map((question) => (
-				<Box key={question.ID} mt={5}>
+				<Box key={question.id} mt={5}>
 					<Typography variant='h5'>{question.title}</Typography>
 					{question.description && (
 						<Box fontStyle='italic' mt={2}>

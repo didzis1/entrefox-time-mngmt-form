@@ -22,7 +22,7 @@ export const getAnswerByID = (questionPage, questionID) => {
 // If validatedButton returns true, 'Seuraava' or 'Olen valmis' button is disabled
 export const validatedButton = () => {
 	const { formData, currentPage } = useForm()
-	const questionAmount = questionSets.find((page) => page.ID === currentPage)
+	const questionAmount = questionSets.find((page) => page.id === currentPage)
 		.questions.length
 	let answeredQuestions = 0
 

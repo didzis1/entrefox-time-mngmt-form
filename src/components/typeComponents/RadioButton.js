@@ -15,18 +15,18 @@ const RadioButton = ({ question }) => {
 	return (
 		<Box mt={2}>
 			<RadioGroup
-				value={getAnswerByID(question.page, question.ID).value ?? null}
-				name={question.ID.toString()}
+				value={getAnswerByID(question.page, question.id).value ?? null}
+				name={question.id.toString()}
 				onChange={(event) =>
 					handleInputChange(event.target.name, event.target.value)
 				}>
 				{question.choices.map((choice) => (
-					<Box key={choice.ID}>
+					<Box key={choice.id}>
 						<FormControlLabel
 							value={choice.text}
 							control={
 								<Radio
-									name={question.ID.toString()}
+									name={question.id.toString()}
 									color='primary'
 								/>
 							}

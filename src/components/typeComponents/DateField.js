@@ -20,17 +20,17 @@ const DateField = ({ question }) => {
 	const handleSetDate = (event) => {
 		const dateToString = event.toString()
 		if (dateToString === 'Invalid Date') {
-			return handleInputChange(question.ID, '')
+			return handleInputChange(question.id, '')
 		}
-		handleInputChange(question.ID, dateToString)
+		handleInputChange(question.id, dateToString)
 	}
 
 	const resetDate = () => {
 		setChecked(!checked)
-		handleInputChange(question.ID, checked ? null : true)
+		handleInputChange(question.id, checked ? null : true)
 	}
 
-	const answer = getAnswerByID(question.page, question.ID)
+	const answer = getAnswerByID(question.page, question.id)
 	return (
 		<Box my={2}>
 			<MuiPickersUtilsProvider utils={DateFnsUtils}>

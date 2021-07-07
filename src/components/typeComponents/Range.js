@@ -46,17 +46,16 @@ const Range = ({ question }) => {
 			<CustomSlider
 				aria-labelledby='discrete-slider'
 				valueLabelDisplay='auto'
-				value={getAnswerByID(question.page, question.ID)}
-				name={question.ID.toString()}
+				value={getAnswerByID(question.page, question.id)}
+				name={question.id.toString()}
 				marks={question.marks}
 				min={question.choices.min}
 				max={question.choices.max}
 				step={question.step}
 				// 'event' required!
-				onChange={(event, newValue) => handleInputChange(
-					question.ID,
-					newValue
-				)}
+				onChange={(event, newValue) =>
+					handleInputChange(question.id, newValue)
+				}
 				color='primary'
 			/>
 		</Box>

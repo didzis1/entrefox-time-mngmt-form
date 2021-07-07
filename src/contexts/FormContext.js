@@ -23,7 +23,6 @@ const FormContextProvider = ({ children }) => {
 		event.preventDefault()
 		setFormSubmitted(!formSubmitted)
 	}
-
 	// Update formData state
 	const handleInputChange = (id, value) => {
 		const newData = {

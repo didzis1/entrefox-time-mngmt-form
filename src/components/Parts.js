@@ -15,11 +15,11 @@ const Parts = ({ questionSets }) => {
 			{questionSets.map((part) => (
 				<div
 					// Part is hidden if the currentPage is not the same as the part ID
-					style={{ display: currentPage === part.ID ? '' : 'none' }}
-					key={part.ID}
-					id={part.ID}>
+					style={{ display: currentPage === part.id ? '' : 'none' }}
+					key={part.id}
+					id={part.id}>
 					{/*page = Allow the question component to see which page it is located on*/}
-					<Question questions={part.questions} page={part.ID} />
+					<Question questions={part.questions} page={part.id} />
 				</div>
 			))}
 		</Box>

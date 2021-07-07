@@ -44,17 +44,17 @@ const PieSlider = ({ question }) => {
 	const { handleInputChange } = useForm()
 	const initialValues = question.sliders.map((slider) => {
 		return {
-			ID: slider.ID,
+			id: slider.id,
 			text: slider.text,
 			range: 4
 		}
 	})
 
 	const [sliderValues, setSliderValues] = useState(initialValues)
-	const calculateSliderSum = (ID) => {
+	const calculateSliderSum = (id) => {
 		let maxValue = 0
 		sliderValues.forEach((value) => {
-			if (value.ID !== ID) {
+			if (value.id !== id) {
 				maxValue += value.range
 			}
 		})
@@ -63,32 +63,32 @@ const PieSlider = ({ question }) => {
 
 	const updateSliderValues = (event, newValue, slider) => {
 		const maxTotal = 24
-		const sum = calculateSliderSum(slider.ID)
+		const sum = calculateSliderSum(slider.id)
 		if (sum + newValue > maxTotal) {
 			event.preventDefault()
 			return false
 		}
 		const newSliderValue = {
-			ID: slider.ID,
+			id: slider.id,
 			text: slider.text,
 			range: newValue
 		}
 		setSliderValues(
 			sliderValues.map((val) =>
-				val.ID === slider.ID ? newSliderValue : val
+				val.id === slider.id ? newSliderValue : val
 			)
 		)
 	}
 
 	const handleSliderDispatch = () => {
-		handleInputChange(question.ID, sliderValues)
+		handleInputChange(question.id, sliderValues)
 	}
 
 	return (
 		<Box align='left' my={4}>
 			{question.sliders.map((slider) => {
 				return (
-					<Box key={slider.ID}>
+					<Box key={slider.id}>
 						<Grid container direction='column'>
 							<Grid item>
 								<Typography variant='h6'>
@@ -101,10 +101,10 @@ const PieSlider = ({ question }) => {
 									valueLabelDisplay='auto'
 									value={
 										sliderValues?.find(
-											(val) => val.ID === slider.ID
+											(val) => val.id === slider.id
 										).range
 									}
-									name={slider.ID.toString()}
+									name={slider.id.toString()}
 									min={0}
 									max={24}
 									onChange={(event, newValue) =>
