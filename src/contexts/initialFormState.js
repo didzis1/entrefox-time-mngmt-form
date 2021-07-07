@@ -33,7 +33,7 @@ const initialFormState = questions.map((page) => {
 						value: question.choices.map((choice) => ({
 							text: choice.text,
 							isChecked: false,
-							ID: choice.ID
+							id: choice.ID
 						}))
 					}
 				case 'tableradiobox':
@@ -46,9 +46,9 @@ const initialFormState = questions.map((page) => {
 						id: question.ID,
 						value: question.sliders.map((slider) => {
 							return {
-								ID: slider.ID,
+								id: slider.ID,
 								text: slider.text,
-								range: 8
+								range: 4
 							}
 						})
 					}
