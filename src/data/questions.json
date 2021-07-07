@@ -1,6 +1,6 @@
 [
 	{
-		"ID": 1,
+		"id": 1,
 		"questions": [
 			{
 				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin? (24h)",
@@ -8,19 +8,19 @@
 				"sliders": [
 					{
 						"text": "Työ",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Uni",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Muu aika [esim. Perhe, harrastukset, lepo, kotityöt]",
-						"ID": 3
+						"id": 3
 					}
 				],
 				"type": "pieslider",
-				"ID": 1
+				"id": 1
 			},
 			{
 				"title": "Haluatko muutosta ajankäyttöösi?",
@@ -29,26 +29,26 @@
 					{
 						"text": "Kyllä, haluan",
 						"condition": "YES",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Ehkä, olen kiinnostunut pohtimaan asiaa",
 						"condition": "MAYBE",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Ei, kaikki on hyvin juuri nyt",
 						"condition": "NO",
-						"ID": 3
+						"id": 3
 					}
 				],
 				"type": "radio",
-				"ID": 2
+				"id": 2
 			}
 		]
 	},
 	{
-		"ID": 2,
+		"id": 2,
 		"questions": [
 			{
 				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
@@ -56,29 +56,29 @@
 				"choices": [
 					{
 						"text": "Lähikuukausina tai aikaisemmin",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Muutaman vuoden päästä",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Noin viiden vuoden kuluttua",
-						"ID": 3
+						"id": 3
 					},
 					{
 						"text": "Myöhemmin kuin viiden vuoden kuluttua",
-						"ID": 4
+						"id": 4
 					}
 				],
 				"type": "radio",
-				"ID": 3
+				"id": 3
 			},
 			{
 				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
 				"description": "",
 				"type": "date",
-				"ID": 4
+				"id": 4
 			},
 			{
 				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken? (24h)",
@@ -86,80 +86,81 @@
 				"sliders": [
 					{
 						"text": "Työ",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Uni",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Muu aika [esim. Perhe, harrastukset, lepo, kotityöt]",
-						"ID": 3
+						"id": 3
 					}
 				],
 				"type": "pieslider",
-				"ID": 5
+				"id": 5
 			},
 			{
 				"title": "Miten työaikasi jakautuu normaalina työpäivänä tällä hetkellä?",
+				"description": "Tähdellä merkatut kentät ovat pakollisia",
 				"columns": [
 					{
 						"text": "Ei kulu aikaa",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Kuluu sopivasti aikaa",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Kuluu liikaa aikaa",
-						"ID": 3
+						"id": 3
 					},
 					{
 						"text": "Kuluu lähes koko työaika",
-						"ID": 4
+						"id": 4
 					},
 					{
 						"text": "Ei jää tarpeeksi aikaa",
-						"ID": 5
+						"id": 5
 					}
 				],
 				"rows": [
 					{
-						"text": "Asiakastyöt",
-						"ID": 1
+						"text": "Asiakastyöt *",
+						"id": 1
 					},
 					{
-						"text": "Hallinnolliset työt",
-						"ID": 2
+						"text": "Hallinnolliset työt *",
+						"id": 2
 					},
 					{
-						"text": "Myynti ja markkinointi",
-						"ID": 3
+						"text": "Myynti ja markkinointi *",
+						"id": 3
 					},
 					{
-						"text": "Osaamisen kehittäminen",
-						"ID": 4
+						"text": "Osaamisen kehittäminen *",
+						"id": 4
 					},
 					{
-						"text": "Oman työn suunnittelu",
-						"ID": 5
+						"text": "Oman työn suunnittelu *",
+						"id": 5
 					},
 					{
-						"text": "Työtehtävien väliset siirtymät",
-						"ID": 6
+						"text": "Työtehtävien väliset siirtymät *",
+						"id": 6
 					},
 					{
-						"text": "Tauot ja palautuminen  (esim. ruokatauko, kahvitauko, sometauko, jumppa)",
-						"ID": 7
+						"text": "Tauot ja palautuminen  (esim. ruokatauko, kahvitauko, sometauko, jumppa) *",
+						"id": 7
 					},
 					{
 						"text": "Muu toiminta",
-						"ID": 8
+						"id": 8
 					}
 				],
 				"type": "tableradiobox",
-				"ID": 6
+				"id": 6
 			},
 			{
 				"title": "Haluatko muutosta työtehtävien ajankäyttöösi?",
@@ -168,26 +169,26 @@
 					{
 						"text": "Kyllä, haluan",
 						"condition": "YES",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Ehkä, olen kiinnostunut pohtimaan asiaa",
 						"condition": "MAYBE",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Ei, kaikki on hyvin juuri nyt",
 						"condition": "NO",
-						"ID": 3
+						"id": 3
 					}
 				],
 				"type": "radio",
-				"ID": 7
+				"id": 7
 			}
 		]
 	},
 	{
-	"ID": 3,
+	"id": 3,
 	"questions": [
 			{
 				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
@@ -195,90 +196,91 @@
 				"choices": [
 					{
 						"text": "Lähikuukausina tai aikaisemmin",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Muutaman vuoden päästä",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Noin viiden vuoden kuluttua",
-						"ID": 3
+						"id": 3
 					},
 					{
 						"text": "Myöhemmin kuin viiden vuoden kuluttua",
-						"ID": 4
+						"id": 4
 					}
 				],
 				"type": "radio",
-				"ID": 8
+				"id": 8
 			},
 			{
 				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
 				"description": "",
 				"type": "date",
-				"ID": 9
+				"id": 9
 			},
 			{
 				"title": "Miten toivoisit työtehtäviesi jakautuvan tulevaisuudessa?",
+				"description": "Tähdellä merkatut kentät ovat pakollisia",
 				"columns": [
 					{
 						"text": "Ei kulu aikaa",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Kuluu sopivasti aikaa",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Kuluu liikaa aikaa",
-						"ID": 3
+						"id": 3
 					},
 					{
 						"text": "Kuluu lähes koko työaika",
-						"ID": 4
+						"id": 4
 					},
 					{
 						"text": "Ei jää tarpeeksi aikaa",
-						"ID": 5
+						"id": 5
 					}
 				],
 				"rows": [
 					{
-						"text": "Asiakastyöt",
-						"ID": 1
+						"text": "Asiakastyöt *",
+						"id": 1
 					},
 					{
-						"text": "Hallinnolliset työt",
-						"ID": 2
+						"text": "Hallinnolliset työt *",
+						"id": 2
 					},
 					{
-						"text": "Myynti ja markkinointi",
-						"ID": 3
+						"text": "Myynti ja markkinointi *",
+						"id": 3
 					},
 					{
-						"text": "Osaamisen kehittäminen",
-						"ID": 4
+						"text": "Osaamisen kehittäminen *",
+						"id": 4
 					},
 					{
-						"text": "Oman työn suunnittelu",
-						"ID": 5
+						"text": "Oman työn suunnittelu *",
+						"id": 5
 					},
 					{
-						"text": "Työtehtävien väliset siirtymät",
-						"ID": 6
+						"text": "Työtehtävien väliset siirtymät *",
+						"id": 6
 					},
 					{
-						"text": "Tauot ja palautuminen  (esim. ruokatauko, kahvitauko, sometauko, jumppa)",
-						"ID": 7
+						"text": "Tauot ja palautuminen  (esim. ruokatauko, kahvitauko, sometauko, jumppa) *",
+						"id": 7
 					},
 					{
 						"text": "Muu toiminta",
-						"ID": 8
+						"id": 8
 					}
 				],
 				"type": "tableradiobox",
-				"ID": 10
+				"id": 10
 			},
 			{
 				"title": "Millä tasolla suunnittelet ajankäyttöä työssäsi? Voit valita yhden tai useampia vaihtoehtoja.",
@@ -286,31 +288,31 @@
 				"choices": [
 					{
 						"text": "Päivätasolla",
-						"ID": 1
+						"id": 1
 					},
 					{
 						"text": "Viikkotasolla",
-						"ID": 2
+						"id": 2
 					},
 					{
 						"text": "Kvartaalitasolla",
-						"ID": 3
+						"id": 3
 					},
 					{
 						"text": "Vuositasolla",
-						"ID": 4
+						"id": 4
 					},
 					{
 						"text": "Suunnittelen töitä fiiliksen mukaan",
-						"ID": 5
+						"id": 5
 					},
 					{
 						"text": "En suunnittele. Teen työtehtäviä sitä mukaan, kun niitä ilmaantuu",
-						"ID": 6
+						"id": 6
 					}
 				],
 				"type": "checkbox",
-				"ID": 11
+				"id": 11
 			}
 		]
 	}
