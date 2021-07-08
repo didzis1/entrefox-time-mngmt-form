@@ -10,12 +10,15 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Box from '@material-ui/core/Box'
 
 const RadioButton = ({ question }) => {
-	const { handleInputChange } = useForm()
-	// console.log(getAnswerByID(question.page, question.ID))
+	const { handleInputChange, currentPage } = useForm()
+	const answer = getAnswerByID(currentPage, question.id)
+	if (!answer) {
+		return null
+	}
 	return (
 		<Box mt={2}>
 			<RadioGroup
-				value={getAnswerByID(question.page, question.id).value ?? null}
+				value={answer.value ?? null}
 				name={question.id.toString()}
 				onChange={(event) =>
 					handleInputChange(event.target.name, event.target.value)

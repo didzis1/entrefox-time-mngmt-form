@@ -15,8 +15,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 const DateField = ({ question }) => {
 	const [checked, setChecked] = useState(false)
-	const { handleInputChange } = useForm()
-
+	const { handleInputChange, currentPage } = useForm()
+	const answer = getAnswerByID(currentPage, question.id)
+	if (!answer) {
+		return null
+	}
 	const handleSetDate = (event) => {
 		const dateToString = event.toString()
 		if (dateToString === 'Invalid Date') {
@@ -30,7 +33,6 @@ const DateField = ({ question }) => {
 		handleInputChange(question.id, checked ? null : true)
 	}
 
-	const answer = getAnswerByID(question.page, question.id)
 	return (
 		<Box my={2}>
 			<MuiPickersUtilsProvider utils={DateFnsUtils}>

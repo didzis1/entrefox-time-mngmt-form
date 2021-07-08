@@ -27,7 +27,6 @@ const TableRadioBox = ({ question }) => {
 		const existingValue = currentValues.value.find(
 			(value) => value.id === row.id
 		)
-
 		if (!existingValue) {
 			const newValue = {
 				id: row.id,

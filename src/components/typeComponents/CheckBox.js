@@ -14,7 +14,6 @@ const CheckBox = ({ question }) => {
 	const currentValues = getAnswerByID(currentPage, question.id)
 
 	const handleCheckBox = (event, id) => {
-		console.log(event)
 		const checkedBox = {
 			id,
 			text: event.target.name,

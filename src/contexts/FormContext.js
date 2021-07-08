@@ -31,7 +31,6 @@ const FormContextProvider = ({ children }) => {
 		}
 		// Create a new state variable
 		const newState = formData.map((pageToEdit) => {
-			console.log(pageToEdit)
 			// Change the value in the page it is located at
 			if (pageToEdit.page === currentPage) {
 				return {

@@ -16,7 +16,7 @@ const questionsToDisplay = (first, second) => {
 		return [3, 4, 5, 6, 8, 9, 10]
 	} else if (first === 'NO' && second === 'NO') {
 		// NO, NO
-		return 'both no'
+		return [5, 6, 8, 9, 10]
 	} else if (first === 'YES' && second === 'NO') {
 		// YES, NO
 		return 'first yes, second no'
@@ -39,6 +39,7 @@ const questionsToDisplay = (first, second) => {
 }
 
 const Question = ({ questions, page }) => {
+	console.log(questions, page)
 	// Render all questions on page
 	return (
 		<>
@@ -53,7 +54,7 @@ const Question = ({ questions, page }) => {
 						</Box>
 					)}
 					{/* Component is determined based on it's type in typeComponent */}
-					{typeComponent({ ...question, page })}
+					{typeComponent(question)}
 				</Box>
 			))}
 		</>
