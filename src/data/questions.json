@@ -28,17 +28,17 @@
 				"choices": [
 					{
 						"text": "Kyllä, haluan",
-						"condition": "YES",
+						"condition": "CONTINUE",
 						"id": 1
 					},
 					{
 						"text": "Ehkä, olen kiinnostunut pohtimaan asiaa",
-						"condition": "MAYBE",
+						"condition": "CONTINUE",
 						"id": 2
 					},
 					{
 						"text": "Ei, kaikki on hyvin juuri nyt",
-						"condition": "NO",
+						"condition": "SKIP",
 						"id": 3
 					}
 				],
@@ -168,17 +168,17 @@
 				"choices": [
 					{
 						"text": "Kyllä, haluan",
-						"condition": "YES",
+						"condition": "CONTINUE",
 						"id": 1
 					},
 					{
 						"text": "Ehkä, olen kiinnostunut pohtimaan asiaa",
-						"condition": "MAYBE",
+						"condition": "CONTINUE",
 						"id": 2
 					},
 					{
 						"text": "Ei, kaikki on hyvin juuri nyt",
-						"condition": "NO",
+						"condition": "SKIP",
 						"id": 3
 					}
 				],
