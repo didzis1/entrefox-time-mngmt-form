@@ -4,7 +4,6 @@ import questionSets from './data/questions.json'
 
 import RadioButton from './components/typeComponents/RadioButton'
 import Range from './components/typeComponents/Range'
-import Text from './components/typeComponents/Text'
 import DateField from './components/typeComponents/DateField'
 import CheckBox from './components/typeComponents/CheckBox'
 import TableRadioBox from './components/typeComponents/TableRadioBox'
@@ -30,8 +29,21 @@ export const validatedButton = () => {
 	formData
 		.find((answersPage) => answersPage.page === currentPage)
 		?.answers.forEach((answer) => {
-			if (answer.value) {
-				answeredQuestions++
+			switch (answer.type) {
+				case 'tableradiobox':
+					if (
+						answer.value.filter((row) => row.id !== 8).length === 7
+					) {
+						return answeredQuestions++
+					}
+					return null
+				case 'date':
+				case 'radio':
+				case 'checkbox':
+				case 'pieslider':
+					return answer.value ? answeredQuestions++ : null
+				default:
+					throw new Error('Type not found in validation...')
 			}
 		})
 	// If answers are equal to or bigger than questions take off disabled button
@@ -46,8 +58,6 @@ const typeComponent = (question) => {
 			return <RadioButton question={question} />
 		case 'range':
 			return <Range question={question} />
-		case 'text':
-			return <Text question={question} />
 		case 'date':
 			return <DateField question={question} />
 		case 'tableradiobox':
