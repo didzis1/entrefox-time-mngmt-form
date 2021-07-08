@@ -10,26 +10,31 @@ const initialFormState = questions.map((page) => {
 				case 'text':
 					return {
 						id: question.id,
+						type: question.type,
 						value: ''
 					}
 				case 'range':
 					return {
 						id: question.id,
+						type: question.type,
 						value: 5
 					}
 				case 'radio':
 					return {
 						id: question.id,
+						type: question.type,
 						value: null
 					}
 				case 'date':
 					return {
 						id: question.id,
+						type: question.type,
 						value: new Date()
 					}
 				case 'checkbox':
 					return {
 						id: question.id,
+						type: question.type,
 						value: question.choices.map((choice) => ({
 							text: choice.text,
 							isChecked: false,
@@ -39,11 +44,13 @@ const initialFormState = questions.map((page) => {
 				case 'tableradiobox':
 					return {
 						id: question.id,
+						type: question.type,
 						value: []
 					}
 				case 'pieslider':
 					return {
 						id: question.id,
+						type: question.type,
 						value: question.sliders.map((slider) => {
 							return {
 								id: slider.id,
@@ -54,7 +61,8 @@ const initialFormState = questions.map((page) => {
 					}
 				default:
 					return {
-						id: question.ID,
+						id: question.id,
+						type: question.type,
 						value: ''
 					}
 			}
