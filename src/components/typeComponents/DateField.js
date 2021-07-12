@@ -15,8 +15,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 const DateField = ({ question }) => {
 	const [checked, setChecked] = useState(false)
-	const { handleInputChange, currentPage } = useForm()
-	const answer = getAnswerByID(currentPage, question.id)
+	const { handleInputChange, currentPage, formData } = useForm()
+	const answer = getAnswerByID(currentPage, question.id, formData)
 	if (!answer) {
 		return null
 	}

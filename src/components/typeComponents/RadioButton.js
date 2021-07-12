@@ -10,8 +10,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Box from '@material-ui/core/Box'
 
 const RadioButton = ({ question }) => {
-	const { handleInputChange, currentPage } = useForm()
-	const answer = getAnswerByID(currentPage, question.id)
+	const { handleInputChange, currentPage, formData } = useForm()
+	const answer = getAnswerByID(currentPage, question.id, formData)
 	if (!answer) {
 		return null
 	}
