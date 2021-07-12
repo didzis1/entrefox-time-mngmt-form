@@ -12,8 +12,13 @@ import Box from '@material-ui/core/Box'
 import useStyles from './styles'
 
 const App = () => {
-	const { currentPage, setCurrentPage, formSubmitted, setFormSubmitted } =
-		useForm()
+	const {
+		currentPage,
+		setCurrentPage,
+		formSubmitted,
+		setFormSubmitted,
+		formData
+	} = useForm()
 	const classes = useStyles()
 
 	// Scroll to top when page is changed
@@ -48,6 +53,7 @@ const App = () => {
 					questionSets={questionSets}
 					currentPage={currentPage}
 					formSubmitted={formSubmitted}
+					formData={formData}
 				/>
 
 				<Footer />

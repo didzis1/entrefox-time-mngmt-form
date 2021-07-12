@@ -18,7 +18,8 @@ const Survey = ({
 	questionSets,
 	currentPage,
 	handleNextPage,
-	handlePreviousPage
+	handlePreviousPage,
+	formData
 }) => {
 	const classes = useStyles()
 
@@ -74,6 +75,7 @@ const Survey = ({
 						<Parts
 							questionSets={questionSets}
 							currentPage={currentPage}
+							formData={formData}
 						/>
 					</form>
 				</Box>
@@ -112,7 +114,8 @@ Survey.propTypes = {
 	handleNextPage: PropTypes.func,
 	handlePreviousPage: PropTypes.func,
 	questionSets: PropTypes.array,
-	currentPage: PropTypes.number
+	currentPage: PropTypes.number,
+	formData: PropTypes.array
 }
 
 export default Survey

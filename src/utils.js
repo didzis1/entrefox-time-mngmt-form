@@ -16,66 +16,34 @@ export const getAnswerByID = (questionPage, questionID, formData) => {
 
 // If validatedButton returns true, 'Seuraava' or 'Olen valmis' button is disabled
 export const validatedButton = (currentPage, formData) => {
-	// const questionAmount = questionSets.find((page) => page.id === currentPage)
-	// 	.questions.length
-	// let answeredQuestions = 0
-	// // Loop over each answer in the page and count the answered questions
-	// formData
-	// 	.find((answersPage) => answersPage.page === currentPage)
-	// 	?.answers.forEach((answer) => {
-	// 		switch (answer.type) {
-	// 			case 'tableradiobox':
-	// 				if (
-	// 					answer.value.filter((row) => row.id !== 8).length === 7
-	// 				) {
-	// 					return answeredQuestions++
-	// 				}
-	// 				return null
-	// 			case 'date':
-	// 			case 'radio':
-	// 			case 'checkbox':
-	// 			case 'pieslider':
-	// 				return answer.value ? answeredQuestions++ : null
-	// 			default:
-	// 				throw new Error('Type not found in validation...')
-	// 		}
-	// 	})
-	// eslint-disable-next-line no-unused-vars
 	let answerCounter = 0
-	// eslint-disable-next-line no-unused-vars
-	const fetchedQuestions = questionsToRender(currentPage)
-	const questionsOnPage = formData?.find(
+
+	const fetchedQuestions = questionsToRender(currentPage, formData)
+	const questionsInJSON = formData?.find(
 		(answersPage) => answersPage.page === currentPage
 	)?.answers
 
-	if (questionsOnPage && fetchedQuestions) {
-		questionsOnPage.forEach((answer) => {
-			if (fetchedQuestions.includes(answer.id)) {
-				switch (answer.type) {
-					case 'tableradiobox':
-						if (
-							answer.value.filter((row) => row.id !== 8)
-								.length === 7
-						) {
-							return answerCounter++
-						}
-						return null
-					case 'date':
-					case 'radio':
-					case 'checkbox':
-					case 'pieslider':
-						return answer.value ? answerCounter++ : null
-					default:
-						throw new Error('Type not found in validation...')
-				}
-			}
-		})
+	if (!fetchedQuestions || !questionsInJSON) {
+		return null
 	}
+
+	questionsInJSON.forEach((answer) => {
+		if (fetchedQuestions.includes(answer.id)) {
+			if (answer.type === 'tableradiobox') {
+				if (answer.value.filter((row) => row.id !== 8).length === 7) {
+					return answerCounter++
+				}
+				return null
+			} else {
+				return answer.value ? answerCounter++ : null
+			}
+		}
+	})
 
 	return !(fetchedQuestions?.length === answerCounter)
 }
 
-export const questionsToRender = (currentPage) => {
+export const questionsToRender = (currentPage, formData) => {
 	// Manually set questions depending on what the user answers
 	switch (currentPage) {
 		case 1:
@@ -83,26 +51,32 @@ export const questionsToRender = (currentPage) => {
 		case 2:
 			return [2]
 		case 3: {
-			const answerToFirstFork = getAnswerByID(2, 2)?.value?.condition
+			// Get the second question's condition
+			const answerToFirstFork = getAnswerByID(2, 2, formData)?.value
+				?.condition
+
+			// Return questions that need to be rendered based on answer
 			if (answerToFirstFork === 'CONTINUE') {
 				return [3, 4, 5, 6]
 			} else if (answerToFirstFork === 'SKIP') {
 				return [5, 6]
-			} else {
-				return [3, 4, 5, 6]
 			}
+			return null
 		}
 		case 4:
 			return [7]
 		case 5: {
-			const answerToSecondFork = getAnswerByID(4, 7)?.value?.condition
+			// Get the seventh question's condition
+			const answerToSecondFork = getAnswerByID(4, 7, formData)?.value
+				?.condition
+
+			// Return questions that need to be rendered based on answer
 			if (answerToSecondFork === 'CONTINUE') {
 				return [8, 9, 10]
 			} else if (answerToSecondFork === 'SKIP') {
 				return [10]
-			} else {
-				return [8, 9, 10]
 			}
+			return null
 		}
 		default:
 			break

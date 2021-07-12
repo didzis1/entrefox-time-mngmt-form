@@ -4,14 +4,14 @@ import { questionsToRender } from '../utils'
 
 import Question from './Question'
 
-const Parts = ({ questionSets, currentPage }) => {
+const Parts = ({ questionSets, currentPage, formData }) => {
 	// Get all questions that are located on currentPage
 	const questionsInCurrentPage = questionSets.find(
 		(page) => page.id === currentPage
 	).questions
 
 	// Fetch filtered questions
-	const fetchedQuestions = questionsToRender(currentPage)
+	const fetchedQuestions = questionsToRender(currentPage, formData)
 
 	// Render questions from questionsInPage with fetchedQuestions question ID's
 	return questionsInCurrentPage.map((question) =>

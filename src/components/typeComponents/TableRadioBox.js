@@ -46,8 +46,6 @@ const TableRadioBox = ({ question }) => {
 					text: column.text
 				}
 			}
-			console.log(existingValue)
-			console.log(rowToUpdate)
 			const updatedValues = currentValues.value.map((previousValue) =>
 				previousValue.id === row.id ? rowToUpdate : previousValue
 			)
