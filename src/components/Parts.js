@@ -1,33 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useForm } from '../contexts/FormContext'
+import { questionsToRender } from '../utils'
 
 import Question from './Question'
 
-// Material UI
-import Box from '@material-ui/core/Box'
+const Parts = ({ questionSets, currentPage }) => {
+	// Get all questions that are located on currentPage
+	const questionsInCurrentPage = questionSets.find(
+		(page) => page.id === currentPage
+	).questions
 
-const Parts = ({ questionSets }) => {
-	// Return each part of the questions in their own div
-	const { currentPage } = useForm()
-	return (
-		<Box>
-			{questionSets.map((part) => (
-				<div
-					// Part is hidden if the currentPage is not the same as the part ID
-					style={{ display: currentPage === part.id ? '' : 'none' }}
-					key={part.id}
-					id={part.id}>
-					{/*page = Allow the question component to see which page it is located on*/}
-					<Question questions={part.questions} page={part.id} />
-				</div>
-			))}
-		</Box>
+	// Fetch filtered questions
+	const fetchedQuestions = questionsToRender(currentPage)
+
+	// Render questions from questionsInPage with fetchedQuestions question ID's
+	return questionsInCurrentPage.map((question) =>
+		fetchedQuestions.includes(question.id) ? (
+			<Question key={question.id} question={question} />
+		) : null
 	)
 }
 
 Parts.propTypes = {
-	questionSets: PropTypes.array
+	questionSets: PropTypes.array,
+	currentPage: PropTypes.number
 }
 
 export default Parts
