@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useForm } from '../contexts/FormContext'
 import { validatedButton } from '../utils'
 
 // Material UI
@@ -7,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core'
 
 const ButtonHandler = ({ text, handlePagination, colors, startIcon, href }) => {
+	const { currentPage, formData } = useForm()
 	const ColorButton = withStyles(() => ({
 		root: {
 			backgroundColor: colors.bg,
@@ -39,7 +41,11 @@ const ButtonHandler = ({ text, handlePagination, colors, startIcon, href }) => {
 				type='button'
 				variant='contained'
 				startIcon={startIcon}
-				disabled={text === 'Edellinen' ? false : validatedButton()}>
+				disabled={
+					text === 'Edellinen'
+						? false
+						: validatedButton(currentPage, formData)
+				}>
 				{text}
 			</ColorButton>
 		</>
