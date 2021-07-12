@@ -18,8 +18,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 const TableRadioBox = ({ question }) => {
-	const { currentPage, handleInputChange } = useForm()
-	const currentValues = getAnswerByID(currentPage, question.id)
+	const { currentPage, handleInputChange, formData } = useForm()
+	const currentValues = getAnswerByID(currentPage, question.id, formData)
 	if (!currentValues) {
 		return <p>Loading...</p>
 	}

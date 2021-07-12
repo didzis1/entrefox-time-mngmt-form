@@ -10,26 +10,38 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Box from '@material-ui/core/Box'
 
 const RadioButton = ({ question }) => {
-	const { handleInputChange, currentPage } = useForm()
-	const answer = getAnswerByID(currentPage, question.id)
+	const { handleInputChange, currentPage, formData } = useForm()
+	const answer = getAnswerByID(currentPage, question.id, formData)
 	if (!answer) {
 		return null
 	}
+
+	const handleRadioChange = (event) => {
+		let newValue = {
+			text: event.target.value
+		}
+		const conditionField = question.choices.find(
+			(field) => field.id === parseInt(event.target.name)
+		).condition
+		if (conditionField) {
+			newValue['condition'] = conditionField
+		}
+		handleInputChange(question.id, newValue)
+	}
+
 	return (
 		<Box mt={2}>
 			<RadioGroup
-				value={answer.value ?? null}
+				value={answer.value?.text ?? null}
 				name={question.id.toString()}
-				onChange={(event) =>
-					handleInputChange(event.target.name, event.target.value)
-				}>
+				onChange={(event) => handleRadioChange(event)}>
 				{question.choices.map((choice) => (
 					<Box key={choice.id}>
 						<FormControlLabel
 							value={choice.text}
 							control={
 								<Radio
-									name={question.id.toString()}
+									name={choice.id.toString()}
 									color='primary'
 								/>
 							}

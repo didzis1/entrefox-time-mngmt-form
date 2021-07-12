@@ -40,13 +40,13 @@ const CustomSlider = withStyles({
 })(Slider)
 
 const Range = ({ question }) => {
-	const { handleInputChange, currentPage } = useForm()
+	const { handleInputChange, currentPage, formData } = useForm()
 	return (
 		<Box my={4}>
 			<CustomSlider
 				aria-labelledby='discrete-slider'
 				valueLabelDisplay='auto'
-				value={getAnswerByID(currentPage, question.id)}
+				value={getAnswerByID(currentPage, question.id, formData)}
 				name={question.id.toString()}
 				marks={question.marks}
 				min={question.choices.min}

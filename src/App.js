@@ -49,7 +49,7 @@ const App = () => {
 					currentPage={currentPage}
 					formSubmitted={formSubmitted}
 				/>
-				)
+
 				<Footer />
 			</Box>
 		</Box>

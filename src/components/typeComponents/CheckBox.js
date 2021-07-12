@@ -10,8 +10,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 import Box from '@material-ui/core/Box'
 
 const CheckBox = ({ question }) => {
-	const { currentPage, handleInputChange } = useForm()
-	const currentValues = getAnswerByID(currentPage, question.id)
+	const { currentPage, handleInputChange, formData } = useForm()
+	const currentValues = getAnswerByID(currentPage, question.id, formData)
 
 	const handleCheckBox = (event, id) => {
 		const checkedBox = {
