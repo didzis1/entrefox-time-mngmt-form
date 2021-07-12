@@ -21,7 +21,12 @@
 				],
 				"type": "pieslider",
 				"id": 1
-			},
+			}
+		]
+	},
+	{
+		"id": 2,
+		"questions": [
 			{
 				"title": "Haluatko muutosta ajankäyttöösi?",
 				"description": "",
@@ -48,120 +53,125 @@
 		]
 	},
 	{
-		"id": 2,
+	"id": 3,
+	"questions": [
+		{
+			"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
+			"description": "",
+			"choices": [
+				{
+					"text": "Lähikuukausina tai aikaisemmin",
+					"id": 1
+				},
+				{
+					"text": "Muutaman vuoden päästä",
+					"id": 2
+				},
+				{
+					"text": "Noin viiden vuoden kuluttua",
+					"id": 3
+				},
+				{
+					"text": "Myöhemmin kuin viiden vuoden kuluttua",
+					"id": 4
+				}
+			],
+			"type": "radio",
+			"id": 3
+		},
+		{
+			"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
+			"description": "",
+			"type": "date",
+			"id": 4
+		},
+		{
+			"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken? (24h)",
+			"description": "",
+			"sliders": [
+				{
+					"text": "Työ",
+					"id": 1
+				},
+				{
+					"text": "Uni",
+					"id": 2
+				},
+				{
+					"text": "Muu aika [esim. Perhe, harrastukset, lepo, kotityöt]",
+					"id": 3
+				}
+			],
+			"type": "pieslider",
+			"id": 5
+		},
+		{
+			"title": "Miten työaikasi jakautuu normaalina työpäivänä tällä hetkellä?",
+			"description": "* Tähdellä merkatut kentät ovat pakollisia",
+			"columns": [
+				{
+					"text": "Ei kulu aikaa",
+					"id": 1
+				},
+				{
+					"text": "Kuluu sopivasti aikaa",
+					"id": 2
+				},
+				{
+					"text": "Kuluu liikaa aikaa",
+					"id": 3
+				},
+				{
+					"text": "Kuluu lähes koko työaika",
+					"id": 4
+				},
+				{
+					"text": "Ei jää tarpeeksi aikaa",
+					"id": 5
+				}
+			],
+			"rows": [
+				{
+					"text": "Asiakastyöt *",
+					"id": 1
+				},
+				{
+					"text": "Hallinnolliset työt *",
+					"id": 2
+				},
+				{
+					"text": "Myynti ja markkinointi *",
+					"id": 3
+				},
+				{
+					"text": "Osaamisen kehittäminen *",
+					"id": 4
+				},
+				{
+					"text": "Oman työn suunnittelu *",
+					"id": 5
+				},
+				{
+					"text": "Työtehtävien väliset siirtymät *",
+					"id": 6
+				},
+				{
+					"text": "Tauot ja palautuminen  (esim. ruokatauko, kahvitauko, sometauko, jumppa) *",
+					"id": 7
+				},
+				{
+					"text": "Muu toiminta",
+					"id": 8
+				}
+			],
+			"type": "tableradiobox",
+			"id": 6
+		}
+		]
+	},
+	{
+		"id": 4,
 		"questions": [
-			{
-				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
-				"description": "",
-				"choices": [
-					{
-						"text": "Lähikuukausina tai aikaisemmin",
-						"id": 1
-					},
-					{
-						"text": "Muutaman vuoden päästä",
-						"id": 2
-					},
-					{
-						"text": "Noin viiden vuoden kuluttua",
-						"id": 3
-					},
-					{
-						"text": "Myöhemmin kuin viiden vuoden kuluttua",
-						"id": 4
-					}
-				],
-				"type": "radio",
-				"id": 3
-			},
-			{
-				"title": "Halutessasi, aseta itsellesi tavoitepäivämäärä muutosten toteuttamiselle",
-				"description": "",
-				"type": "date",
-				"id": 4
-			},
-			{
-				"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken? (24h)",
-				"description": "",
-				"sliders": [
-					{
-						"text": "Työ",
-						"id": 1
-					},
-					{
-						"text": "Uni",
-						"id": 2
-					},
-					{
-						"text": "Muu aika [esim. Perhe, harrastukset, lepo, kotityöt]",
-						"id": 3
-					}
-				],
-				"type": "pieslider",
-				"id": 5
-			},
-			{
-				"title": "Miten työaikasi jakautuu normaalina työpäivänä tällä hetkellä?",
-				"description": "Tähdellä merkatut kentät ovat pakollisia",
-				"columns": [
-					{
-						"text": "Ei kulu aikaa",
-						"id": 1
-					},
-					{
-						"text": "Kuluu sopivasti aikaa",
-						"id": 2
-					},
-					{
-						"text": "Kuluu liikaa aikaa",
-						"id": 3
-					},
-					{
-						"text": "Kuluu lähes koko työaika",
-						"id": 4
-					},
-					{
-						"text": "Ei jää tarpeeksi aikaa",
-						"id": 5
-					}
-				],
-				"rows": [
-					{
-						"text": "Asiakastyöt *",
-						"id": 1
-					},
-					{
-						"text": "Hallinnolliset työt *",
-						"id": 2
-					},
-					{
-						"text": "Myynti ja markkinointi *",
-						"id": 3
-					},
-					{
-						"text": "Osaamisen kehittäminen *",
-						"id": 4
-					},
-					{
-						"text": "Oman työn suunnittelu *",
-						"id": 5
-					},
-					{
-						"text": "Työtehtävien väliset siirtymät *",
-						"id": 6
-					},
-					{
-						"text": "Tauot ja palautuminen  (esim. ruokatauko, kahvitauko, sometauko, jumppa) *",
-						"id": 7
-					},
-					{
-						"text": "Muu toiminta",
-						"id": 8
-					}
-				],
-				"type": "tableradiobox",
-				"id": 6
-			},
 			{
 				"title": "Haluatko muutosta työtehtävien ajankäyttöösi?",
 				"description": "",
@@ -188,8 +198,8 @@
 		]
 	},
 	{
-	"id": 3,
-	"questions": [
+		"id": 5,
+		"questions": [
 			{
 				"title": "Mieti ensin, millä aikavälillä haluat muutoksen tapahtuvan?",
 				"description": "",
@@ -222,7 +232,7 @@
 			},
 			{
 				"title": "Miten toivoisit työtehtäviesi jakautuvan tulevaisuudessa?",
-				"description": "Tähdellä merkatut kentät ovat pakollisia",
+				"description": "* Tähdellä merkatut kentät ovat pakollisia",
 				"columns": [
 					{
 						"text": "Ei kulu aikaa",
