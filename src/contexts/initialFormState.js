@@ -7,18 +7,6 @@ const initialFormState = questions.map((page) => {
 		answers: page.questions.map((question) => {
 			switch (question.type) {
 				case 'multi-text':
-				case 'text':
-					return {
-						id: question.id,
-						type: question.type,
-						value: ''
-					}
-				case 'range':
-					return {
-						id: question.id,
-						type: question.type,
-						value: 5
-					}
 				case 'radio':
 					return {
 						id: question.id,
