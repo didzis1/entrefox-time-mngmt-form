@@ -4,6 +4,7 @@ import { useForm } from './contexts/FormContext'
 
 // Components
 import Survey from './components/Survey'
+import Summary from './components/Summary'
 // import Summary from './components/Summary'
 import Footer from './components/Footer'
 
@@ -46,15 +47,19 @@ const App = () => {
 	return (
 		<Box className={classes.mainBackground}>
 			<Box pt={5}>
-				<Survey
-					handleFormSubmit={handleFormSubmit}
-					handleNextPage={handleNextPage}
-					handlePreviousPage={handlePreviousPage}
-					questionSets={questionSets}
-					currentPage={currentPage}
-					formSubmitted={formSubmitted}
-					formData={formData}
-				/>
+				{formSubmitted ? (
+					<Summary handleFormSubmit={handleFormSubmit} />
+				) : (
+					<Survey
+						handleFormSubmit={handleFormSubmit}
+						handleNextPage={handleNextPage}
+						handlePreviousPage={handlePreviousPage}
+						questionSets={questionSets}
+						currentPage={currentPage}
+						formSubmitted={formSubmitted}
+						formData={formData}
+					/>
+				)}
 
 				<Footer />
 			</Box>
