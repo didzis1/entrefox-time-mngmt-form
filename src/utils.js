@@ -56,9 +56,9 @@ export const questionsToRender = (currentPage, formData) => {
 				?.condition
 
 			// Return questions that need to be rendered based on answer
-			if (answerToFirstFork === 'CONTINUE') {
+			if (answerToFirstFork === 'YES' || answerToFirstFork === 'MAYBE') {
 				return [3, 4, 5, 6]
-			} else if (answerToFirstFork === 'SKIP') {
+			} else if (answerToFirstFork === 'NO') {
 				return [5, 6]
 			}
 			return null
@@ -71,9 +71,12 @@ export const questionsToRender = (currentPage, formData) => {
 				?.condition
 
 			// Return questions that need to be rendered based on answer
-			if (answerToSecondFork === 'CONTINUE') {
+			if (
+				answerToSecondFork === 'YES' ||
+				answerToSecondFork === 'MAYBE'
+			) {
 				return [8, 9, 10]
-			} else if (answerToSecondFork === 'SKIP') {
+			} else if (answerToSecondFork === 'NO') {
 				return [10]
 			}
 			return null
