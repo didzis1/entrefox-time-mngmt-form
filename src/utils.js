@@ -59,7 +59,7 @@ export const questionsToRender = (currentPage, formData) => {
 			if (answerToFirstFork === 'YES' || answerToFirstFork === 'MAYBE') {
 				return [3, 4, 5, 6]
 			} else if (answerToFirstFork === 'NO') {
-				return [5, 6]
+				return [6]
 			}
 			return null
 		}
@@ -105,4 +105,9 @@ export const typeComponent = (question) => {
 		default:
 			throw new Error('Type not found...')
 	}
+}
+
+// Convert date to dd.MM.YYYY format
+export const dateToYMD = (date) => {
+	return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 }
