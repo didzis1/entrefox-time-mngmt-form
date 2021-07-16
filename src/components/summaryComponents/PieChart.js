@@ -14,9 +14,9 @@ const PieChart = ({ pieData }) => {
 					label: 'This is the label',
 					data: pieData.map((slider) => slider.range),
 					backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
+						'rgba(224, 247, 17, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)'
+						'rgba(79, 247, 17, 0.2)'
 					],
 					borderColor: [
 						'rgba(255, 99, 132, 1)',
@@ -25,7 +25,12 @@ const PieChart = ({ pieData }) => {
 					],
 					borderWidth: 2
 				}
-			]
+			],
+			options: {
+				animation: {
+					duration: 0
+				}
+			}
 		}
 
 		return (
