@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 		color: '#8f9a27'
 	},
 	headingImage: {
-		width: '80%'
+		width: '40%'
 	},
 	chartBar: {
 		backgroundColor: '#cacaca',
