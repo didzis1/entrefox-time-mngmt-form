@@ -1,19 +1,24 @@
 import React from 'react'
-import { getAnswerByID } from '../utils'
-import PieChart from '../components/summaryComponents/PieChart'
+import PieChart from './PieChart'
+import { useForm } from '../../contexts/FormContext'
+import { getAnswerByID, dateToYMD } from '../../utils'
 
 //Material UI
+import useStyles from '../../styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 
-const summaryContent = (formData) => {
-	console.log(formData)
-	const firstSlider = getAnswerByID(1, 1, formData)?.value
-	const secondSlider = getAnswerByID(3, 5, formData)?.value
-	console.log(firstSlider)
-	console.log(secondSlider)
-	return [
+const SummaryContent = () => {
+	const classes = useStyles()
+	const { formData } = useForm()
+	const firstFork = getAnswerByID(1, 1, formData)?.value
+	const secondFork = getAnswerByID(3, 5, formData)?.value
+	console.log(
+		'date',
+		dateToYMD(new Date(getAnswerByID(3, 4, formData)?.value))
+	)
+	const possibleOutcomes = [
 		{
 			id: 1,
 			question: 2,
@@ -29,12 +34,19 @@ const summaryContent = (formData) => {
 						että se jakautuisi tulevaisuudessa.
 					</Typography>
 					<Box my={3}>
+						{' '}
 						<Grid container direction='row' justify='space-around'>
 							<Grid item xs={12} sm={8} md={5}>
-								<PieChart pieData={firstSlider} />
+								<Typography align='center' variant='h5'>
+									Aikasi nykyhetkellä
+								</Typography>
+								<PieChart pieData={firstFork} />
 							</Grid>{' '}
 							<Grid item xs={12} sm={8} md={5}>
-								<PieChart pieData={secondSlider} />
+								<Typography align='center' variant='h5'>
+									Haluttu ajanvietto tulevaisuudessa
+								</Typography>
+								<PieChart pieData={secondFork} />
 							</Grid>
 						</Grid>
 					</Box>{' '}
@@ -48,14 +60,21 @@ const summaryContent = (formData) => {
 						kaipaamasi muutos ajankäytössä tarkoittaa käytännössä:
 						Mitä tekemistä lisäät elämääsi ja mistä puolestaan
 						vähennät. Ole konkreettinen ja rehellinen itsellesi.
-						Olet vastannut, että haluat muutosta ja asettanut
-						muutoksen tavoitepäiväksi [valittu pvm]. Mitä tämä
-						tarkoittaa lyhyellä aikavälillä? Kirjaa ylös ensi
-						askeleet muutokset tiellä ja listaa muutosta. Mitkä ovat
-						ensimmäiset askeleet muutoksen tiellä ja mikä tai kuka
-						tukee sinua muutoksessa. Oman etenemisen seurannassa on
-						hyvä laittaa itselle välitavoitteita ja kiittää itseään
-						etenemisestä.
+						Olet vastannut, että haluat muutosta
+						{typeof getAnswerByID(3, 4, formData)?.value ===
+						'boolean'
+							? ', mutta et ole asettanut muutoksen tavoitepäivän.'
+							: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
+									new Date(
+										getAnswerByID(3, 4, formData)?.value
+									)
+							  )} `}{' '}
+						Mitä tämä tarkoittaa lyhyellä aikavälillä? Kirjaa ylös
+						ensi askeleet muutokset tiellä ja listaa muutosta. Mitkä
+						ovat ensimmäiset askeleet muutoksen tiellä ja mikä tai
+						kuka tukee sinua muutoksessa. Oman etenemisen
+						seurannassa on hyvä laittaa itselle välitavoitteita ja
+						kiittää itseään etenemisestä.
 					</Typography>
 				</Box>
 			)
@@ -75,8 +94,17 @@ const summaryContent = (formData) => {
 						tulevaisuudessa
 					</Typography>
 					<Box my={3}>
-						tähän piirakkakuvio x [kysymys 1 valitut arvot ] ja x
-						[kysymys 4 valitut arvot ]
+						<Grid container direction='row' justify='space-around'>
+							<Grid item xs={12} sm={8} md={5}>
+								<Typography align='center' variant='h5'>
+									Yleinen ajankäyttö
+								</Typography>
+								<PieChart pieData={firstFork} />
+							</Grid>{' '}
+							<Grid item xs={12} sm={8} md={5}>
+								<PieChart pieData={secondFork} />
+							</Grid>
+						</Grid>
 					</Box>{' '}
 					<Typography>
 						Jos yllä olevissa kuvioissa on eroja, sinulla ehkä on
@@ -90,13 +118,13 @@ const summaryContent = (formData) => {
 					</Typography>
 					<Typography>
 						Vastasit, että olet kiinnostunut tavoittelemaan muutosta
-						[valittu taso kysymys 3] ja asettanut muutoksen
-						tavoitepäiväksi [valittu pvm]. Ideoi ensi askeleita
-						kohti muutosta, kartoita muutoksen hidasteet ja kirjaa
-						ylös mikä tai kuka voisi tukea sinua muutoksen
-						toteuttamisessa. Oman etenemisen seurannassa on hyvä
-						laittaa itselle välitavoitteita ja kiittää itseään
-						etenemisestä.
+						XXXX[valittu taso kysymys 3]XXXXX ja asettanut muutoksen
+						tavoitepäiväksi XXXX[valittu pvm kysymys 4 ]XXXX. Ideoi
+						ensi askeleita kohti muutosta, kartoita muutoksen
+						hidasteet ja kirjaa ylös mikä tai kuka voisi tukea sinua
+						muutoksen toteuttamisessa. Oman etenemisen seurannassa
+						on hyvä laittaa itselle välitavoitteita ja kiittää
+						itseään etenemisestä.
 					</Typography>
 				</Box>
 			)
@@ -112,8 +140,12 @@ const summaryContent = (formData) => {
 						unen ja muun ajan välillä.
 					</Typography>
 					<Box my={3}>
-						tähän piirakkakuvio x [kysymys 1 valitut arvot ]
-					</Box>{' '}
+						<Grid container direction='row' justify='space-around'>
+							<Grid item xs={12} sm={8} md={5}>
+								<PieChart pieData={firstFork} />
+							</Grid>
+						</Grid>
+					</Box>
 					<Typography>
 						Et halua muutosta, joten vaikuttaa sitä, että olet
 						tyytyväinen nykytilanteeseen. Nyt on oikea aika kehua
@@ -126,7 +158,7 @@ const summaryContent = (formData) => {
 		},
 		{
 			id: 4,
-			question: 5,
+			question: 7,
 			condition: 'YES',
 			content: (
 				<Box>
@@ -137,8 +169,8 @@ const summaryContent = (formData) => {
 						miten toivoisit, että ne jakautuisivat.
 					</Typography>
 					<Box my={3}>
-						tähän kuvio x [kysymys 5 valitut arvot ] ja x [kysymys 9
-						valitut arvot ]
+						tähän kuvio x XXXX[kysymys 6 valitut arvot ]XXXX ja x
+						XXXX[kysymys 10 valitut arvot ]XXXX
 					</Box>{' '}
 					<Typography>
 						Nyt voisi olla priorisoinnin tai töiden uudelleen
@@ -155,42 +187,60 @@ const summaryContent = (formData) => {
 					</Typography>
 					<Typography>
 						Olet vastannut, että haluat muutosta työtehtäviesi
-						ajankäytössä [valittu taso kysymys 8] ja asettanut
-						muutoksen tavoitepäiväksi [valittu pvm]. Aloita
-						kartoittamalla tilanne: kirjaa viikon aikana ylös, mihin
-						kaikkeen käytät omaa aikaasi. Merkitse asiat
-						mahdollisimman tarkasti ja totuudenmukaisesti. Viikon
-						päättyessä tarkastele omaa ajankäyttöäsi: mihin kaikkeen
-						käytät aikasi ja löydätkö listasta niin sanottuja
-						aikavarkaita? Tarkastelun jälkeen suunnittele haluamasi
-						muutokset.
+						ajankäytössä XXXX[valittu taso kysymys 8]XXXX ja
+						asettanut muutoksen tavoitepäiväksi XXXX[valittu pvm]
+						kysymys 9XXXX. Aloita kartoittamalla tilanne: kirjaa
+						viikon aikana ylös, mihin kaikkeen käytät omaa aikaasi.
+						Merkitse asiat mahdollisimman tarkasti ja
+						totuudenmukaisesti. Viikon päättyessä tarkastele omaa
+						ajankäyttöäsi: mihin kaikkeen käytät aikasi ja löydätkö
+						listasta niin sanottuja aikavarkaita? Tarkastelun
+						jälkeen suunnittele haluamasi muutokset.
 					</Typography>
 					<Typography>
 						Aseta itsellesi välitavoitteita ja hyödynnä
 						apuvälineitä. Ota käyttöön neljän kohdan tehtävälistan,
 						joka viikoittain käytettynä säästää aikaasi ja parantaa
-						töiden hallittavuutta:
-						https://www.entrefox.fi/arjen-ajanhallinta/ . Hyödynnä
-						sovelluksia, joissa voit ajastaa työtehtäviä. Näitä ovat
-						muun muassa Todoist https://todoist.com/app/today ja
-						Keep my notes https://www.kitetech.co/keepmynotes. Etsi
-						myös itsellesi ‘ajanhallintakaveri’. Tämä voi olla
-						ystävä tai hengenheimolainen, jolta saat vertaistukea,
-						tai vaihtoehtoisesti kokeneempi ’coachi’, jolta saat
-						kommentteja ja ideoita ajankäyttöösi.
+						töiden hallittavuutta:{' '}
+						<a
+							href='https://www.entrefox.fi/arjen-ajanhallinta/'
+							target='blank'
+							className={classes.linkTag}>
+							https://www.entrefox.fi/arjen-ajanhallinta/
+						</a>
+						. Hyödynnä sovelluksia, joissa voit ajastaa työtehtäviä.
+						Näitä ovat muun muassa Todoist{' '}
+						<a
+							href='https://todoist.com/app/today'
+							target='blank'
+							className={classes.linkTag}>
+							https://todoist.com/app/today
+						</a>{' '}
+						ja Keep my notes{' '}
+						<a
+							href='https://www.kitetech.co/keepmynotes'
+							target='blank'
+							className={classes.linkTag}>
+							https://www.kitetech.co/keepmynotes
+						</a>
+						. Etsi myös itsellesi ‘ajanhallintakaveri’. Tämä voi
+						olla ystävä tai hengenheimolainen, jolta saat
+						vertaistukea, tai vaihtoehtoisesti kokeneempi ’coachi’,
+						jolta saat kommentteja ja ideoita ajankäyttöösi.
 					</Typography>
 					<Typography>
 						Vastasit myös, että suunnittelet työtehtäviäsi tällä
-						hetkellä [kysymys 10 valitut arvot ]. Kysy itseltäsi,
-						onko tämä suunnittelun aikaväli riittävä ja tukeeko
-						nykyinen tapasi suunnitella haluamaasi muutosta.
+						hetkellä [kysymys 11 multiple choices valitut arvot ].
+						Kysy itseltäsi, onko tämä suunnittelun aikaväli riittävä
+						ja tukeeko nykyinen tapasi suunnitella haluamaasi
+						muutosta.
 					</Typography>
 				</Box>
 			)
 		},
 		{
 			id: 5,
-			question: 5,
+			question: 7,
 			condition: 'MAYBE',
 			content: (
 				<Box>
@@ -200,8 +250,8 @@ const summaryContent = (formData) => {
 						alla olevan koostetta omista vastauksistasi.
 					</Typography>
 					<Box my={3}>
-						tähän kuvio x [kysymys 5 valitut arvot ] ja x [kysymys 9
-						valitut arvot ]
+						tähän kuvio x [kysymys 6 valitut arvot ] ja x [kysymys
+						10 valitut arvot ]
 					</Box>{' '}
 					<Typography>
 						Nyt voi olla priorisoinnin tai töiden uudelleen
@@ -220,8 +270,8 @@ const summaryContent = (formData) => {
 					<Typography>
 						Vastasit, että olet kiinnostunut tavoittelemaan muutosta
 						työtehtävien ajankäytössä [valittu taso kysymys 8] ja
-						asettanut muutoksen tavoitepäiväksi [valittu pvm].
-						Seuraa viikon aikana sitä, mihin työaikasi kuluu.
+						asettanut muutoksen tavoitepäiväksi [valittu pvm kysymys
+						9]. Seuraa viikon aikana sitä, mihin työaikasi kuluu.
 						Merkitse asiat mahdollisimman tarkasti ja
 						totuudenmukaisesti. Viikon päättyessä voit tarkastella
 						omaa ajankäyttöäsi: mihin kaikkeen käytät aikaasi ja
@@ -233,21 +283,37 @@ const summaryContent = (formData) => {
 						Välitavoitteiden asettaminen ja apuvälineiden käyttö
 						tukee muutosta. Kokeile neljän kohdan tehtävälistaa,
 						joka viikoittain käytettynä säästää aikaasi ja parantaa
-						töiden hallittavuutta:
-						https://www.entrefox.fi/arjen-ajanhallinta/. Hyödynnä
-						kalenteria ja sovelluksia, joissa voit ajastaa
-						työtehtäviä. Näitä ovat muun muassa Todoist
-						https://todoist.com/app/today ja Keep my notes
-						https://www.kitetech.co/keepmynotes. Juttele muiden
-						samantapaista työtä tekevien kanssa siitä, miten he
-						käyttävät työaikansa. Tämä voi olla ystävä tai
-						hengenheimolainen, jolta saat vertaistukea, tai
-						vaihtoehtoisesti kokeneempi ’coachi’, jolta saat
+						töiden hallittavuutta:{' '}
+						<a
+							href='https://www.entrefox.fi/arjen-ajanhallinta/'
+							target='blank'
+							className={classes.linkTag}>
+							https://www.entrefox.fi/arjen-ajanhallinta/
+						</a>
+						. Hyödynnä kalenteria ja sovelluksia, joissa voit
+						ajastaa työtehtäviä. Näitä ovat muun muassa Todoist{' '}
+						<a
+							href='https://todoist.com/app/today'
+							target='blank'
+							className={classes.linkTag}>
+							https://todoist.com/app/today
+						</a>{' '}
+						ja Keep my notes{' '}
+						<a
+							href='https://www.kitetech.co/keepmynotes'
+							target='blank'
+							className={classes.linkTag}>
+							https://www.kitetech.co/keepmynotes
+						</a>
+						. Juttele muiden samantapaista työtä tekevien kanssa
+						siitä, miten he käyttävät työaikansa. Tämä voi olla
+						ystävä tai hengenheimolainen, jolta saat vertaistukea,
+						tai vaihtoehtoisesti kokeneempi ’coachi’, jolta saat
 						kommentteja ja ideoita ajankäyttöösi.
 					</Typography>
 					<Typography>
 						Vastasit myös, että suunnittelet työtehtäviäsi tällä
-						hetkellä [kysymys 10 valitut arvot ]. Kysy itseltäsi,
+						hetkellä [kysymys 11 valitut arvot ]. Kysy itseltäsi,
 						onko tämä suunnittelun aikaväli sinulle ja pohtimallesi
 						muutokselle sopiva.
 					</Typography>
@@ -256,7 +322,7 @@ const summaryContent = (formData) => {
 		},
 		{
 			id: 6,
-			question: 5,
+			question: 7,
 			condition: 'NO',
 			content: (
 				<Box>
@@ -264,7 +330,7 @@ const summaryContent = (formData) => {
 						Näin arvioit, että aikasi jakautuu eri työtehtävien
 						välillä
 					</Typography>
-					<Box my={3}>tähän kuvio x [kysymys 5 valitut arvot</Box>
+					<Box my={3}>tähän kuvio x [kysymys 6 valitut arvot</Box>
 					<Typography>
 						Muutokset ja kausivaihtelut ovat yrittäjille hyvin
 						tyyppilisiä. Nyt kun aika on hallinnassa, pohdi voisitko
@@ -272,7 +338,7 @@ const summaryContent = (formData) => {
 						kehittämällä uutta tai syventämällä jo olemassa olevia
 						taitojasi. Lisäksi voit miettiä pitkän aikavälin
 						ajanhallintaa. Vastasit, että suunnittelet ajankäyttöä
-						työssäsi [kysymys 10 valitut arvot ]. Kysy itseltäsi
+						työssäsi [kysymys 11 valitut arvot ]. Kysy itseltäsi
 						onko tämä mielestäsi toimiva ratkaisu tällä hetkellä ja
 						pidemmällä aikavälillä. Pitkän aikavälin suunnittelu on
 						hyvä palauttaa niihin tekijöihin, mitkä ovat elämässä
@@ -282,6 +348,27 @@ const summaryContent = (formData) => {
 			)
 		}
 	]
+
+	const firstCondition = getAnswerByID(2, 2, formData)
+	const secondCondition = getAnswerByID(4, 7, formData)
+	console.log(firstCondition)
+	console.log(secondCondition)
+	const outcomesToRender = possibleOutcomes.filter((outcome) => {
+		if (
+			outcome.question === firstCondition.id &&
+			outcome.condition === firstCondition?.value.condition
+		) {
+			return outcome
+		}
+		if (
+			outcome.question === secondCondition.id &&
+			outcome.condition === secondCondition?.value.condition
+		) {
+			return outcome
+		}
+		return null
+	})
+	return outcomesToRender.map((outcome) => outcome.content)
 }
 
-export default summaryContent
+export default SummaryContent
