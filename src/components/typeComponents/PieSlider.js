@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useForm } from '../../contexts/FormContext'
+import { getAnswerByID } from '../../utils'
 
 // Material UI
 import Slider from '@material-ui/core/Slider'
@@ -41,16 +42,24 @@ const CustomSlider = withStyles({
 })(Slider)
 
 const PieSlider = ({ question }) => {
-	const { handleInputChange } = useForm()
-	const initialValues = question.sliders.map((slider) => {
+	const { handleInputChange, currentPage, formData } = useForm()
+	const initFromComp = question.sliders.map((slider) => {
 		return {
 			id: slider.id,
 			text: slider.text,
 			range: 4
 		}
 	})
+	const initFromState = getAnswerByID(
+		currentPage,
+		question.id,
+		formData
+	)?.value
 
-	const [sliderValues, setSliderValues] = useState(initialValues)
+	const [sliderValues, setSliderValues] = useState(
+		initFromState ? initFromState : initFromComp
+	)
+
 	const calculateSliderSum = (id) => {
 		let maxValue = 0
 		sliderValues.forEach((value) => {
@@ -90,10 +99,25 @@ const PieSlider = ({ question }) => {
 				return (
 					<Box key={slider.id}>
 						<Grid container direction='column'>
-							<Grid item>
-								<Typography variant='h6'>
-									{slider.text}
-								</Typography>
+							<Grid
+								container
+								item
+								direction='row'
+								justify='space-between'>
+								<Grid item>
+									<Typography variant='body1'>
+										{slider.text}
+									</Typography>
+								</Grid>
+								<Grid item>
+									<Typography variant='body1'>
+										{
+											sliderValues?.find(
+												(val) => val.id === slider.id
+											).range
+										}
+									</Typography>
+								</Grid>
 							</Grid>
 							<Grid item>
 								<CustomSlider
