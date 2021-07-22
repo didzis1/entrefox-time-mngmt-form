@@ -9,12 +9,11 @@ import useStyles from '../../styles'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+import Divider from '@material-ui/core/Divider'
 
 const SummaryContent = () => {
 	const classes = useStyles()
 	const { formData } = useForm()
-
-	console.log(getAnswerByID(3, 4, formData))
 
 	const answers = {
 		1: getAnswerByID(1, 1, formData)?.value,
@@ -22,10 +21,8 @@ const SummaryContent = () => {
 		4: getAnswerByID(3, 4, formData)?.value,
 		5: getAnswerByID(3, 5, formData)?.value,
 		6: getAnswerByID(3, 6, formData),
-		10: getAnswerByID(3, 10, formData)
+		10: getAnswerByID(5, 10, formData)
 	}
-
-	console.log(getAnswerByID(3, 4, formData)?.value)
 
 	const possibleOutcomes = [
 		{
@@ -53,13 +50,13 @@ const SummaryContent = () => {
 									<Typography align='center' variant='h5'>
 										Aikasi nykyhetkellä
 									</Typography>
-									<PieChart pieData={answers[1]} />
+									<PieChart answer={answers[1]} />
 								</Grid>{' '}
 								<Grid item xs={12} sm={8} md={5}>
 									<Typography align='center' variant='h5'>
 										Haluttu ajanvietto tulevaisuudessa
 									</Typography>
-									<PieChart pieData={answers[5]} />
+									<PieChart answer={answers[5]} />
 								</Grid>
 							</Grid>
 						</Box>{' '}
@@ -90,6 +87,9 @@ const SummaryContent = () => {
 							Oman etenemisen seurannassa on hyvä laittaa itselle
 							välitavoitteita ja kiittää itseään etenemisestä.
 						</Typography>
+						<Box my={3}>
+							<Divider />
+						</Box>
 					</Box>
 				)
 			}
@@ -118,10 +118,10 @@ const SummaryContent = () => {
 									<Typography align='center' variant='h5'>
 										Yleinen ajankäyttö
 									</Typography>
-									<PieChart pieData={answers[1]} />
+									<PieChart answer={answers[1]} />
 								</Grid>{' '}
 								<Grid item xs={12} sm={8} md={5}>
-									<PieChart pieData={answers[5]} />
+									<PieChart answer={answers[5]} />
 								</Grid>
 							</Grid>
 						</Box>{' '}
@@ -150,6 +150,9 @@ const SummaryContent = () => {
 							etenemisen seurannassa on hyvä laittaa itselle
 							välitavoitteita ja kiittää itseään etenemisestä.
 						</Typography>
+						<Box my={3}>
+							<Divider />
+						</Box>
 					</Box>
 				)
 			}
@@ -168,10 +171,16 @@ const SummaryContent = () => {
 						<Box my={3}>
 							<Grid
 								container
-								direction='row'
-								justify='space-around'>
+								direction='column'
+								justify='center'
+								alignItems='center'>
+								<Grid item xs={12}>
+									<Typography align='center' variant='h5'>
+										Yleinen ajankäyttö
+									</Typography>
+								</Grid>
 								<Grid item xs={12} sm={8} md={5}>
-									<PieChart pieData={answers[1]} />
+									<PieChart answer={answers[1]} />
 								</Grid>
 							</Grid>
 						</Box>
@@ -183,6 +192,9 @@ const SummaryContent = () => {
 							asioihin, saat riittävästi aikaa itsellesi, työlle
 							ja levolle.
 						</Typography>
+						<Box my={3}>
+							<Divider />
+						</Box>
 					</Box>
 				)
 			}
@@ -273,6 +285,9 @@ const SummaryContent = () => {
 							riittävä ja tukeeko nykyinen tapasi suunnitella
 							haluamaasi muutosta.
 						</Typography>
+						<Box my={3}>
+							<Divider />
+						</Box>
 					</Box>
 				)
 			}
@@ -359,6 +374,9 @@ const SummaryContent = () => {
 							itseltäsi, onko tämä suunnittelun aikaväli sinulle
 							ja pohtimallesi muutokselle sopiva.
 						</Typography>
+						<Box my={3}>
+							<Divider />
+						</Box>
 					</Box>
 				)
 			}
@@ -389,6 +407,9 @@ const SummaryContent = () => {
 							palauttaa niihin tekijöihin, mitkä ovat elämässä
 							tärkeitä ja mihin haluaisit panostaa enemmän.
 						</Typography>
+						<Box my={3}>
+							<Divider />
+						</Box>
 					</Box>
 				)
 			}
