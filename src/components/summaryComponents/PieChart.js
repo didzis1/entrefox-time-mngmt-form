@@ -5,14 +5,14 @@ import { Pie } from 'react-chartjs-2'
 // Material UI
 import Box from '@material-ui/core/Box'
 
-const PieChart = ({ pieData }) => {
-	if (pieData) {
+const PieChart = ({ answer }) => {
+	if (answer) {
 		const data = {
-			labels: pieData.map((slider) => slider.text),
+			labels: answer.map((slider) => slider.text),
 			datasets: [
 				{
 					label: 'This is the label',
-					data: pieData.map((slider) => slider.range),
+					data: answer.map((slider) => slider.range),
 					backgroundColor: [
 						'rgba(224, 247, 17, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
@@ -25,12 +25,7 @@ const PieChart = ({ pieData }) => {
 					],
 					borderWidth: 2
 				}
-			],
-			options: {
-				animation: {
-					duration: 0
-				}
-			}
+			]
 		}
 
 		return (
@@ -43,7 +38,7 @@ const PieChart = ({ pieData }) => {
 }
 
 PieChart.propTypes = {
-	pieData: PropTypes.array
+	answer: PropTypes.array
 }
 
 export default PieChart
