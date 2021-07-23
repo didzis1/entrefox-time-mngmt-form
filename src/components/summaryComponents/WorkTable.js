@@ -34,6 +34,8 @@ const StyledTableRow = withStyles(() => ({
 
 // eslint-disable-next-line no-unused-vars
 const WorkTable = ({ present, future }) => {
+	console.log('Present:', present)
+	console.log('Future:', future)
 	return (
 		<TableContainer component={Paper}>
 			<Table size='medium'>
@@ -45,49 +47,27 @@ const WorkTable = ({ present, future }) => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					<StyledTableRow>
-						<TableCell>Asiakastyöt</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>Hallinnolliset työt</TableCell>
-						<TableCell>Kuluu sopivasti aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>Myynti ja markkinointi</TableCell>
-						<TableCell>Ei jää tarpeeksi aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>Osaamisen kehittäminen</TableCell>
-						<TableCell>Kuluu liikaa aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>Oman työn suunnittelu</TableCell>
-						<TableCell>Kuluu lähes koko työaika</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>Työtehtävien väliset siirtymät</TableCell>
-						<TableCell>Kuluu sopivasti aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>
-							Tauot ja palautuminen (esim. ruokatauko, kahvitauko,
-							sometauko, jumppa)
-						</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
-					<StyledTableRow>
-						<TableCell>Muu toiminta</TableCell>
-						<TableCell>Kuluu liikaa aikaa</TableCell>
-						<TableCell>Ei kulu aikaa</TableCell>
-					</StyledTableRow>
+					{present?.value.map((presentAnswer) => {
+						return (
+							<StyledTableRow key={presentAnswer.id}>
+								<TableCell>
+									{presentAnswer.row.replaceAll('*', '')}
+								</TableCell>
+								<TableCell>
+									{presentAnswer.answer.text}
+								</TableCell>
+								<TableCell>
+									{
+										future?.value.find(
+											(futureAnswer) =>
+												futureAnswer.id ===
+												presentAnswer.id
+										).answer.text
+									}
+								</TableCell>
+							</StyledTableRow>
+						)
+					})}
 				</TableBody>
 			</Table>
 		</TableContainer>
