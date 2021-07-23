@@ -77,7 +77,7 @@ export const questionsToRender = (currentPage, formData) => {
 			) {
 				return [8, 9, 10, 11]
 			} else if (answerToSecondFork === 'NO') {
-				return [10]
+				return [10, 11]
 			}
 			return null
 		}
