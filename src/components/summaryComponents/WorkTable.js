@@ -32,10 +32,7 @@ const StyledTableRow = withStyles(() => ({
 	}
 }))(TableRow)
 
-// eslint-disable-next-line no-unused-vars
 const WorkTable = ({ present, future }) => {
-	console.log('Present:', present)
-	console.log('Future:', future)
 	return (
 		<TableContainer component={Paper}>
 			<Table size='medium'>
@@ -43,7 +40,9 @@ const WorkTable = ({ present, future }) => {
 					<TableRow>
 						<StyledTableCell>Työn osa-alue</StyledTableCell>
 						<StyledTableCell>Nykyhetkellä</StyledTableCell>
-						<StyledTableCell>Tulevaisuudessa</StyledTableCell>
+						{future ? (
+							<StyledTableCell>Tulevaisuudessa</StyledTableCell>
+						) : null}
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -54,17 +53,17 @@ const WorkTable = ({ present, future }) => {
 									{presentAnswer.row.replaceAll('*', '')}
 								</TableCell>
 								<TableCell>
-									{presentAnswer.answer.text}
+									{presentAnswer?.answer.text}
 								</TableCell>
-								<TableCell>
-									{
-										future?.value.find(
+								{future ? (
+									<TableCell>
+										{future?.value.find(
 											(futureAnswer) =>
 												futureAnswer.id ===
 												presentAnswer.id
-										).answer.text
-									}
-								</TableCell>
+										)?.answer.text || ''}
+									</TableCell>
+								) : null}
 							</StyledTableRow>
 						)
 					})}
