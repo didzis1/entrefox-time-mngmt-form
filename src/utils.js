@@ -18,28 +18,44 @@ export const getAnswerByID = (questionPage, questionID, formData) => {
 export const validatedButton = (currentPage, formData) => {
 	let answerCounter = 0
 
+	// Questions that are visible on the page
 	const fetchedQuestions = questionsToRender(currentPage, formData)
+	// Answers to questions that are located on X page
 	const questionsInJSON = formData?.find(
 		(answersPage) => answersPage.page === currentPage
 	)?.answers
 
+	// If there are no questions visible or no answers, return null
 	if (!fetchedQuestions || !questionsInJSON) {
 		return null
 	}
 
+	// Loop over answered questions
+	// Increase the counter if different criterias are met
 	questionsInJSON.forEach((answer) => {
 		if (fetchedQuestions.includes(answer.id)) {
 			if (answer.type === 'tableradiobox') {
+				// At least seven fields must be answered, not counting the optional "Muu toiminta" field
 				if (answer.value.filter((row) => row.id !== 8).length === 7) {
 					return answerCounter++
 				}
 				return null
+			} else if (answer.type === 'checkbox') {
+				// At least one checkbox must be checked
+				const checkedAmount = answer.value.filter(
+					(ans) => ans.isChecked
+				).length
+				if (checkedAmount !== 0) {
+					return answerCounter++
+				}
 			} else {
 				return answer.value ? answerCounter++ : null
 			}
 		}
 	})
 
+	// This return statement decides whether the "Seuraava" or
+	// "Olen valmis" button is disabled or not
 	return !(fetchedQuestions?.length === answerCounter)
 }
 
