@@ -33,6 +33,9 @@ const StyledTableRow = withStyles(() => ({
 }))(TableRow)
 
 const WorkTable = ({ present, future }) => {
+	// Present = answer for question 6
+	// Future = answer for question 10
+	// If there is no answer for question 10 (future props), table has only two columns instead of three
 	return (
 		<TableContainer component={Paper}>
 			<Table size='medium'>
