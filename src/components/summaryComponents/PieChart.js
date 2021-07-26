@@ -11,7 +11,7 @@ const PieChart = ({ answer }) => {
 			labels: answer.map((slider) => slider.text),
 			datasets: [
 				{
-					label: 'This is the label',
+					label: 'Ajankäytön piirakkakuvio',
 					data: answer.map((slider) => slider.range),
 					backgroundColor: [
 						'rgba(224, 247, 17, 0.2)',
