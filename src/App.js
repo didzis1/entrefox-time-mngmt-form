@@ -5,7 +5,6 @@ import { useForm } from './contexts/FormContext'
 // Components
 import Survey from './components/Survey'
 import Summary from './components/Summary'
-// import Summary from './components/Summary'
 import Footer from './components/Footer'
 
 // Material UI
