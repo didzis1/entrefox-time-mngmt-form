@@ -53,7 +53,7 @@ const SummaryContent = () => {
 			condition: 'YES',
 			content: function Content(key) {
 				return (
-					<Box key={key} my={3}>
+					<Box className='html2pdf__page-break' key={key} my={3}>
 						<Typography>
 							Olet vastannut haluavasi muutosta siihen miten
 							vuorokautesi tunnit jakautuvat työn, levon ja muun
@@ -126,7 +126,7 @@ const SummaryContent = () => {
 			condition: 'MAYBE',
 			content: function Content(key) {
 				return (
-					<Box key={key} my={3}>
+					<Box className='html2pdf__page-break' key={key} my={3}>
 						<Typography>
 							Sinussa kytee kiinnostus pohtia miten vuorokautesi
 							tunnit jakautuvat työn, levon ja muun tekemisen
@@ -189,7 +189,7 @@ const SummaryContent = () => {
 			condition: 'NO',
 			content: function Content(key) {
 				return (
-					<Box key={key} my={3}>
+					<Box className='html2pdf__page-break' key={key} my={3}>
 						<Typography>
 							Näin arvioit, että aikasi jakautuu tällä hetkellä
 							työn, unen ja muun ajan välillä.
@@ -228,7 +228,7 @@ const SummaryContent = () => {
 			condition: 'YES',
 			content: function Content(key) {
 				return (
-					<Box key={key} my={3}>
+					<Box className='html2pdf__page-break' key={key} my={3}>
 						<Typography>
 							Vastasit haluavasi muutosta myös siihen, kuinka
 							aikasi jakautuu eri työtehtävien välillä. Alla näet
@@ -326,7 +326,7 @@ const SummaryContent = () => {
 			condition: 'MAYBE',
 			content: function Content(key) {
 				return (
-					<Box key={key} my={3}>
+					<Box className='html2pdf__page-break' key={key} my={3}>
 						<Typography>
 							Olet kiinnostunut pohtimaan sitä, miten aikasi kuluu
 							eri työtehtäviin. Ehkä kaipaat siihen muutosta.
@@ -424,7 +424,7 @@ const SummaryContent = () => {
 			condition: 'NO',
 			content: function Content(key) {
 				return (
-					<Box key={key} my={3}>
+					<Box className='html2pdf__page-break' key={key} my={3}>
 						<Typography>
 							Näin arvioit, että aikasi jakautuu eri työtehtävien
 							välillä

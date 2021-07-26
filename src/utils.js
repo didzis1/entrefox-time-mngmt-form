@@ -127,3 +127,11 @@ export const typeComponent = (question) => {
 export const dateToYMD = (date) => {
 	return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 }
+
+export const scrollToTop = (isSmooth) => {
+	return window.scrollTo({
+		top: 0,
+		left: 0,
+		behavior: isSmooth ? 'smooth' : 'auto'
+	})
+}

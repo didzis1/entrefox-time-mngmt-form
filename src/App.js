@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import questionSets from './data/questions.json'
 import { useForm } from './contexts/FormContext'
+import { scrollToTop } from './utils'
 
 // Components
 import Survey from './components/Survey'
@@ -23,11 +24,7 @@ const App = () => {
 
 	// Scroll to top when page is changed
 	useEffect(() => {
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: 'smooth'
-		})
+		scrollToTop(true)
 	}, [currentPage])
 
 	const handleNextPage = () => {
@@ -41,6 +38,7 @@ const App = () => {
 	const handleFormSubmit = (event) => {
 		event.preventDefault()
 		setFormSubmitted(!formSubmitted)
+		scrollToTop(true)
 	}
 
 	return (

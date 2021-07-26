@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { dateToYMD } from '../utils'
+import { dateToYMD, scrollToTop } from '../utils'
 
 // Summary components
 import SummaryContent from './summaryComponents/SummaryContent'
@@ -31,10 +31,7 @@ const Summary = ({ handleFormSubmit }) => {
 
 	const downloadPDF = async () => {
 		// scrolling up is necessary in order for the PDF to load correctly
-		await window.scrollTo({
-			top: 0,
-			left: 0
-		})
+		await scrollToTop(false)
 
 		// Select and clone elements that are to be edited for the PDF
 		const element = document.getElementById('summary').cloneNode(true)
