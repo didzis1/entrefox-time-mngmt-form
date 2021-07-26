@@ -8,10 +8,13 @@ import ButtonHandler from './ButtonHandler'
 
 // Material UI
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import useStyles from '../styles'
+import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded'
+import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded'
 
 // Images
 import header from '../images/summary/header.png'
@@ -112,11 +115,38 @@ const Summary = ({ handleFormSubmit }) => {
 					<SummaryContent />
 				</Box>
 			</Box>
-			<ButtonHandler
-				text='Lataa PDF'
-				colors={{ bg: '#cddc39', bgHover: '#c0ca33' }}
-				handlePagination={downloadPDF}
-			/>
+
+			<Box mt={2}>
+				<Grid
+					container
+					direction='row'
+					justify='space-between'
+					alignItems='center'>
+					<Grid item>
+						<Box my={1}>
+							<ButtonHandler
+								text='Lataa PDF'
+								colors={{ bg: '#cddc39', bgHover: '#c0ca33' }}
+								startIcon={<GetAppRoundedIcon />}
+								handlePagination={downloadPDF}
+							/>
+						</Box>
+					</Grid>
+					<Grid item>
+						<Box my={1}>
+							<ButtonHandler
+								href='https://www.entrefox.fi/ajanhallinta/'
+								text='Päätä kysely'
+								startIcon={<CheckCircleOutlineRoundedIcon />}
+								colors={{
+									bg: '#ffeb3b',
+									bgHover: '#fbc02d'
+								}}
+							/>
+						</Box>
+					</Grid>
+				</Grid>
+			</Box>
 		</Container>
 	)
 }
