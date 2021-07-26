@@ -35,6 +35,7 @@ const Summary = ({ handleFormSubmit }) => {
 
 		// Select and clone elements that are to be edited for the PDF
 		const element = document.getElementById('summary').cloneNode(true)
+		const singlePage = document.querySelectorAll('.pdf_page')
 		const lastPage = document
 			.getElementById('last-pdf-page')
 			.cloneNode(true)
@@ -46,7 +47,7 @@ const Summary = ({ handleFormSubmit }) => {
 		element.style.backgroundSize = '100% 279.4mm'
 		element.style.backgroundRepeat = 'repeat-y'
 		element.style.padding = '15px 100px 0px 100px'
-
+		singlePage.forEach((page) => (page.style.margin = '25px auto'))
 		// Options for the html2pdf rendering
 		const opt = {
 			filename: 'entrefox_summary.pdf',
@@ -70,6 +71,7 @@ const Summary = ({ handleFormSubmit }) => {
 		element.style.padding = ''
 		element.style.backgroundImage = ''
 		element.style.backgroundSize = ''
+		singlePage.forEach((page) => (page.style.margin = 'auto'))
 	}
 
 	// Get first two conditions
@@ -106,9 +108,13 @@ const Summary = ({ handleFormSubmit }) => {
 						Olet käynyt kehityskeskustelun {currentDate}.
 					</Typography>
 				</Box>
-				<Divider />
 
-				<Box id='last-pdf-page' my={4}>
+				<Divider data-html2canvas-ignore='true' />
+
+				{/* Manual page-break for the PDF generation */}
+				<Box className='html2pdf__page-break'></Box>
+
+				<Box mt={4}>
 					<SummaryContent />
 				</Box>
 			</Box>

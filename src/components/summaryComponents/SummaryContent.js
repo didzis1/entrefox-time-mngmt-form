@@ -53,17 +53,19 @@ const SummaryContent = () => {
 			condition: 'YES',
 			content: function Content(key) {
 				return (
-					<Box className='html2pdf__page-break' key={key} my={3}>
-						<Typography>
-							Olet vastannut haluavasi muutosta siihen miten
-							vuorokautesi tunnit jakautuvat työn, levon ja muun
-							tekemisen välillä. Vaikka aikaa ei voi hallita, omaa
-							ajankäyttöään voi suunnitella ja seurata. Näet alla
-							rinnakkain, miten aikasi jakautuu nyt ja miten
-							toivot, että se jakautuisi tulevaisuudessa.
-						</Typography>
+					<Box key={key} my={3} className='pdf_page'>
+						<Box>
+							<Typography>
+								Olet vastannut haluavasi muutosta siihen miten
+								vuorokautesi tunnit jakautuvat työn, levon ja
+								muun tekemisen välillä. Vaikka aikaa ei voi
+								hallita, omaa ajankäyttöään voi suunnitella ja
+								seurata. Näet alla rinnakkain, miten aikasi
+								jakautuu nyt ja miten toivot, että se jakautuisi
+								tulevaisuudessa.
+							</Typography>
+						</Box>
 						<Box my={3}>
-							{' '}
 							<Grid
 								container
 								direction='row'
@@ -75,7 +77,7 @@ const SummaryContent = () => {
 										</Typography>
 										<PieChart answer={answers[1]} />
 									</Box>
-								</Grid>{' '}
+								</Grid>
 								<Grid item xs={12} sm={8} md={5}>
 									<Box mt={2} mb={2}>
 										<Typography align='center' variant='h5'>
@@ -85,37 +87,41 @@ const SummaryContent = () => {
 									</Box>
 								</Grid>
 							</Grid>
-						</Box>{' '}
-						<Typography>
-							Todennäköisesti yllä olevissa kuvioissa on todella
-							eroavaisuuksia. Sinulla on ehkä tarve levätä lisää,
-							saada ajatukset irti työstä tekemällä jotain sinua
-							ilahduttavaa tai viettää aikaa yhdessä muiden
-							kanssa. Keinot muuttaa sitä, mihin aikasi kuluu voi
-							olla vaikeaa mutta se kannattaa. Kirjoita itsellesi
-							ylös MITÄ tuo kaipaamasi muutos ajankäytössä
-							tarkoittaa käytännössä: Mitä tekemistä lisäät
-							elämääsi ja mistä puolestaan vähennät. Ole
-							konkreettinen ja rehellinen itsellesi.
-						</Typography>
-						<br />
-						<Typography>
-							Olet vastannut, että haluat muutosta
-							{typeof answers[4] === 'boolean'
-								? ', mutta et ole asettanut muutoksen tavoitepäivän.'
-								: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
-										new Date(answers[4])
-								  )}`}
-							. Mitä tämä tarkoittaa lyhyellä aikavälillä? Kirjaa
-							ylös ensi askeleet muutokset tiellä ja listaa
-							muutosta. Mitkä ovat ensimmäiset askeleet muutoksen
-							tiellä ja mikä tai kuka tukee sinua muutoksessa.
-							Oman etenemisen seurannassa on hyvä laittaa itselle
-							välitavoitteita ja kiittää itseään etenemisestä.
-						</Typography>
-						<Box my={3}>
-							<Divider />
 						</Box>
+						<Box>
+							<Typography>
+								Todennäköisesti yllä olevissa kuvioissa on
+								todella eroavaisuuksia. Sinulla on ehkä tarve
+								levätä lisää, saada ajatukset irti työstä
+								tekemällä jotain sinua ilahduttavaa tai viettää
+								aikaa yhdessä muiden kanssa. Keinot muuttaa
+								sitä, mihin aikasi kuluu voi olla vaikeaa mutta
+								se kannattaa. Kirjoita itsellesi ylös MITÄ tuo
+								kaipaamasi muutos ajankäytössä tarkoittaa
+								käytännössä: Mitä tekemistä lisäät elämääsi ja
+								mistä puolestaan vähennät. Ole konkreettinen ja
+								rehellinen itsellesi.
+							</Typography>
+						</Box>
+						<Box mt={2} mb={10}>
+							<Typography>
+								Olet vastannut, että haluat muutosta
+								{typeof answers[4] === 'boolean'
+									? ', mutta et ole asettanut muutoksen tavoitepäivän.'
+									: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
+											new Date(answers[4])
+									  )}`}
+								. Mitä tämä tarkoittaa lyhyellä aikavälillä?
+								Kirjaa ylös ensi askeleet muutokset tiellä ja
+								listaa muutosta. Mitkä ovat ensimmäiset askeleet
+								muutoksen tiellä ja mikä tai kuka tukee sinua
+								muutoksessa. Oman etenemisen seurannassa on hyvä
+								laittaa itselle välitavoitteita ja kiittää
+								itseään etenemisestä.
+							</Typography>
+						</Box>
+						<Box className='html2pdf__page-break'></Box>
+						<Divider data-html2canvas-ignore='true' />
 					</Box>
 				)
 			}
@@ -126,58 +132,67 @@ const SummaryContent = () => {
 			condition: 'MAYBE',
 			content: function Content(key) {
 				return (
-					<Box className='html2pdf__page-break' key={key} my={3}>
-						<Typography>
-							Sinussa kytee kiinnostus pohtia miten vuorokautesi
-							tunnit jakautuvat työn, levon ja muun tekemisen
-							välillä. Vaikka aikaa ei voi hallita, omaa
-							ajankäyttöään voi suunnitella ja seurata. Näet alla
-							rinnakkain, miten aikasi jakautuu nyt ja miten
-							toivot, että se jakautuisi tulevaisuudessa
-						</Typography>
-						<Box my={3}>
-							<Grid
-								container
-								direction='row'
-								justify='space-around'>
-								<Grid item xs={12} sm={8} md={5}>
-									<Typography align='center' variant='h5'>
-										Yleinen ajankäyttö
-									</Typography>
-									<PieChart answer={answers[1]} />
+					<Box key={key} my={3}>
+						<Box className='html2pdf__page-break'>
+							<Typography>
+								Sinussa kytee kiinnostus pohtia miten
+								vuorokautesi tunnit jakautuvat työn, levon ja
+								muun tekemisen välillä. Vaikka aikaa ei voi
+								hallita, omaa ajankäyttöään voi suunnitella ja
+								seurata. Näet alla rinnakkain, miten aikasi
+								jakautuu nyt ja miten toivot, että se jakautuisi
+								tulevaisuudessa
+							</Typography>
+							<Box my={3}>
+								<Grid
+									container
+									direction='row'
+									justify='space-around'>
+									<Grid item xs={12} sm={8} md={5}>
+										<Typography align='center' variant='h5'>
+											Aikasi nykyhetkellä
+										</Typography>
+										<PieChart answer={answers[1]} />
+									</Grid>
+									<Grid item xs={12} sm={8} md={5}>
+										<Typography align='center' variant='h5'>
+											Haluttu ajanvietto tulevaisuudessa
+										</Typography>
+										<PieChart answer={answers[5]} />
+									</Grid>
 								</Grid>
-								<Grid item xs={12} sm={8} md={5}>
-									<PieChart answer={answers[5]} />
-								</Grid>
-							</Grid>
+							</Box>
+							<Typography>
+								Jos yllä olevissa kuvioissa on eroja, sinulla
+								ehkä on tarve levätä lisää, saada ajatukset irti
+								työstä tekemällä jotain sinua ilahduttavaa tai
+								viettää aikaa yhdessä muiden kanssa. Kirjoita
+								itsellesi ylös mitä tuo kaipaamasi muutos
+								ajankäytössä tarkoittaa käytännössä: mitä
+								tekemistä haluat enemmän elämääsi ja mitä haluat
+								vähentää. Ole avoin omille ideoillesi ja
+								kunnioita arvojasi.
+							</Typography>
+							<br />
+							<Typography>
+								Vastasit, että olet kiinnostunut tavoittelemaan
+								muutosta {answers[3]}{' '}
+								{typeof answers[4] === 'boolean'
+									? ', mutta et ole asettanut muutoksen tavoitepäivän.'
+									: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
+											new Date(answers[4])
+									  )}`}
+								. Ideoi ensi askeleita kohti muutosta, kartoita
+								muutoksen hidasteet ja kirjaa ylös mikä tai kuka
+								voisi tukea sinua muutoksen toteuttamisessa.
+								Oman etenemisen seurannassa on hyvä laittaa
+								itselle välitavoitteita ja kiittää itseään
+								etenemisestä.
+							</Typography>
 						</Box>
-						<Typography>
-							Jos yllä olevissa kuvioissa on eroja, sinulla ehkä
-							on tarve levätä lisää, saada ajatukset irti työstä
-							tekemällä jotain sinua ilahduttavaa tai viettää
-							aikaa yhdessä muiden kanssa. Kirjoita itsellesi ylös
-							mitä tuo kaipaamasi muutos ajankäytössä tarkoittaa
-							käytännössä: mitä tekemistä haluat enemmän elämääsi
-							ja mitä haluat vähentää. Ole avoin omille ideoillesi
-							ja kunnioita arvojasi.
-						</Typography>
-						<br />
-						<Typography>
-							Vastasit, että olet kiinnostunut tavoittelemaan
-							muutosta {answers[3]}{' '}
-							{typeof answers[4] === 'boolean'
-								? ', mutta et ole asettanut muutoksen tavoitepäivän.'
-								: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
-										new Date(answers[4])
-								  )}`}
-							. Ideoi ensi askeleita kohti muutosta, kartoita
-							muutoksen hidasteet ja kirjaa ylös mikä tai kuka
-							voisi tukea sinua muutoksen toteuttamisessa. Oman
-							etenemisen seurannassa on hyvä laittaa itselle
-							välitavoitteita ja kiittää itseään etenemisestä.
-						</Typography>
+
 						<Box my={3}>
-							<Divider />
+							<Divider data-html2canvas-ignore='true' />
 						</Box>
 					</Box>
 				)
@@ -216,7 +231,7 @@ const SummaryContent = () => {
 							ja levolle.
 						</Typography>
 						<Box my={3}>
-							<Divider />
+							<Divider data-html2canvas-ignore='true' />
 						</Box>
 					</Box>
 				)
@@ -228,93 +243,117 @@ const SummaryContent = () => {
 			condition: 'YES',
 			content: function Content(key) {
 				return (
-					<Box className='html2pdf__page-break' key={key} my={3}>
-						<Typography>
-							Vastasit haluavasi muutosta myös siihen, kuinka
-							aikasi jakautuu eri työtehtävien välillä. Alla näet
-							vertailua siitä, miten työtehtäväsi jakautuvat tällä
-							hetkellä ja miten toivoisit, että ne jakautuisivat.
-						</Typography>
-						<Box my={3}>
-							<WorkTable
-								present={answers[6]}
-								future={answers[10]}
-							/>
+					<Box key={key} mt={10}>
+						<Box className='pdf_page'>
+							<Box>
+								<Typography>
+									Vastasit haluavasi muutosta myös siihen,
+									kuinka aikasi jakautuu eri työtehtävien
+									välillä. Alla näet vertailua siitä, miten
+									työtehtäväsi jakautuvat tällä hetkellä ja
+									miten toivoisit, että ne jakautuisivat.
+								</Typography>
+							</Box>
+
+							<Box my={3}>
+								<WorkTable
+									present={answers[6]}
+									future={answers[10]}
+								/>
+							</Box>
+
+							<Box>
+								<Typography>
+									Nyt voisi olla priorisoinnin tai töiden
+									uudelleen järjestämisen paikka. Mieti,
+									keskitytkö yrityksen ja oman jaksamisesi
+									kannalta oikeisiin asioihin – myös pitkällä
+									tähtäimellä. Ovatko kaikki aikaa syövät
+									tehtävät välttämättömiä? Voiko niitä
+									siirtää, delegoida tai jättää tekemättä?
+									Ehkä tuttavapiirissäsi on yrittäjiä, joilla
+									on energiaa vaikka muille jakaa. Kysy
+									häneltä, miten hän on aikansa järjestänyt.
+									Tekeekö hän ehkä yhteistyötä toisen
+									yrittäjän kanssa markkinoinnissa ja
+									myynnissä? Ehkä hän ostaa joitain palveluja
+									yrityksensä pyörittämisen tueksi.
+								</Typography>
+							</Box>
 						</Box>
-						<Typography>
-							Nyt voisi olla priorisoinnin tai töiden uudelleen
-							järjestämisen paikka. Mieti, keskitytkö yrityksen ja
-							oman jaksamisesi kannalta oikeisiin asioihin – myös
-							pitkällä tähtäimellä. Ovatko kaikki aikaa syövät
-							tehtävät välttämättömiä? Voiko niitä siirtää,
-							delegoida tai jättää tekemättä? Ehkä
-							tuttavapiirissäsi on yrittäjiä, joilla on energiaa
-							vaikka muille jakaa. Kysy häneltä, miten hän on
-							aikansa järjestänyt. Tekeekö hän ehkä yhteistyötä
-							toisen yrittäjän kanssa markkinoinnissa ja
-							myynnissä? Ehkä hän ostaa joitain palveluja
-							yrityksensä pyörittämisen tueksi.
-						</Typography>
-						<br />
-						<Typography>
-							Olet vastannut, että haluat muutosta työtehtäviesi
-							ajankäytössä {answers[8]}{' '}
-							{typeof answers[9] === 'boolean'
-								? ', mutta et ole asettanut muutoksen tavoitepäivän.'
-								: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
-										new Date(answers[4])
-								  )}`}
-							. Aloita kartoittamalla tilanne: kirjaa viikon
-							aikana ylös, mihin kaikkeen käytät omaa aikaasi.
-							Merkitse asiat mahdollisimman tarkasti ja
-							totuudenmukaisesti. Viikon päättyessä tarkastele
-							omaa ajankäyttöäsi: mihin kaikkeen käytät aikasi ja
-							löydätkö listasta niin sanottuja aikavarkaita?
-							Tarkastelun jälkeen suunnittele haluamasi muutokset.
-						</Typography>
-						<br />
-						<Typography>
-							Aseta itsellesi välitavoitteita ja hyödynnä
-							apuvälineitä. Ota käyttöön neljän kohdan
-							tehtävälistan, joka viikoittain käytettynä säästää
-							aikaasi ja parantaa töiden hallittavuutta:{' '}
-							<a
-								href='https://www.entrefox.fi/arjen-ajanhallinta/'
-								target='blank'
-								className={classes.linkTag}>
-								https://www.entrefox.fi/arjen-ajanhallinta/
-							</a>
-							. Hyödynnä sovelluksia, joissa voit ajastaa
-							työtehtäviä. Näitä ovat muun muassa Todoist{' '}
-							<a
-								href='https://todoist.com/app/today'
-								target='blank'
-								className={classes.linkTag}>
-								https://todoist.com/app/today
-							</a>{' '}
-							ja Keep my notes{' '}
-							<a
-								href='https://www.kitetech.co/keepmynotes'
-								target='blank'
-								className={classes.linkTag}>
-								https://www.kitetech.co/keepmynotes
-							</a>
-							. Etsi myös itsellesi ‘ajanhallintakaveri’. Tämä voi
-							olla ystävä tai hengenheimolainen, jolta saat
-							vertaistukea, tai vaihtoehtoisesti kokeneempi
-							’coachi’, jolta saat kommentteja ja ideoita
-							ajankäyttöösi.
-						</Typography>
-						<br />
-						<Typography>
-							Vastasit myös, että suunnittelet työtehtäviäsi tällä
-							hetkellä [kysymys 11 multiple choices valitut arvot
-							]. Kysy itseltäsi, onko tämä suunnittelun aikaväli
-							riittävä ja tukeeko nykyinen tapasi suunnitella
-							haluamaasi muutosta.
-						</Typography>
-						<Box my={3}>
-							<Divider />
+						<Box className='html2pdf__page-break'></Box>
+
+						<Box mt={8} id='last-pdf-page' className='pdf_page'>
+							<Box my={2}>
+								<Typography>
+									Olet vastannut, että haluat muutosta
+									työtehtäviesi ajankäytössä {answers[8]}
+									{typeof answers[9] === 'boolean'
+										? ', mutta et ole asettanut muutoksen tavoitepäivän'
+										: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
+												new Date(answers[4])
+										  )}`}
+									. Aloita kartoittamalla tilanne: kirjaa
+									viikon aikana ylös, mihin kaikkeen käytät
+									omaa aikaasi. Merkitse asiat mahdollisimman
+									tarkasti ja totuudenmukaisesti. Viikon
+									päättyessä tarkastele omaa ajankäyttöäsi:
+									mihin kaikkeen käytät aikasi ja löydätkö
+									listasta niin sanottuja aikavarkaita?
+									Tarkastelun jälkeen suunnittele haluamasi
+									muutokset.
+								</Typography>
+							</Box>
+
+							<Box my={2}>
+								<Typography>
+									Aseta itsellesi välitavoitteita ja hyödynnä
+									apuvälineitä. Ota käyttöön neljän kohdan
+									tehtävälistan, joka viikoittain käytettynä
+									säästää aikaasi ja parantaa töiden
+									hallittavuutta:{' '}
+									<a
+										href='https://www.entrefox.fi/arjen-ajanhallinta/'
+										target='blank'
+										className={classes.linkTag}>
+										https://www.entrefox.fi/arjen-ajanhallinta/
+									</a>
+									. Hyödynnä sovelluksia, joissa voit ajastaa
+									työtehtäviä. Näitä ovat muun muassa Todoist{' '}
+									<a
+										href='https://todoist.com/app/today'
+										target='blank'
+										className={classes.linkTag}>
+										https://todoist.com/app/today
+									</a>{' '}
+									ja Keep my notes{' '}
+									<a
+										href='https://www.kitetech.co/keepmynotes'
+										target='blank'
+										className={classes.linkTag}>
+										https://www.kitetech.co/keepmynotes
+									</a>
+									. Etsi myös itsellesi ‘ajanhallintakaveri’.
+									Tämä voi olla ystävä tai hengenheimolainen,
+									jolta saat vertaistukea, tai
+									vaihtoehtoisesti kokeneempi ’coachi’, jolta
+									saat kommentteja ja ideoita ajankäyttöösi.
+								</Typography>
+							</Box>
+
+							<Box my={2}>
+								<Typography>
+									Vastasit myös, että suunnittelet
+									työtehtäviäsi tällä hetkellä [kysymys 11
+									multiple choices valitut arvot ]. Kysy
+									itseltäsi, onko tämä suunnittelun aikaväli
+									riittävä ja tukeeko nykyinen tapasi
+									suunnitella haluamaasi muutosta.
+								</Typography>
+							</Box>
+						</Box>
+						<Box my={4}>
+							<Divider data-html2canvas-ignore='true' />
 						</Box>
 					</Box>
 				)
@@ -412,7 +451,7 @@ const SummaryContent = () => {
 							ja pohtimallesi muutokselle sopiva.
 						</Typography>
 						<Box my={3}>
-							<Divider />
+							<Divider data-html2canvas-ignore='true' />
 						</Box>
 					</Box>
 				)
@@ -451,7 +490,7 @@ const SummaryContent = () => {
 							enemmän.
 						</Typography>
 						<Box my={3}>
-							<Divider />
+							<Divider data-html2canvas-ignore='true' />
 						</Box>
 					</Box>
 				)
