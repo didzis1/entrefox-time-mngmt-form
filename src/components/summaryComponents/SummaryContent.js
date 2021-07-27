@@ -69,7 +69,7 @@ const SummaryContent = () => {
 							<Grid
 								container
 								direction='row'
-								justify='space-around'>
+								justifyContent='space-around'>
 								<Grid item xs={12} sm={8} md={5}>
 									<Box mt={2} mb={2}>
 										<Typography align='center' variant='h5'>
@@ -147,7 +147,7 @@ const SummaryContent = () => {
 								<Grid
 									container
 									direction='row'
-									justify='space-around'>
+									justifyContent='space-around'>
 									<Grid item xs={12} sm={8} md={5}>
 										<Typography align='center' variant='h5'>
 											Aikasi nykyhetkellä
@@ -213,7 +213,7 @@ const SummaryContent = () => {
 							<Grid
 								container
 								direction='row'
-								justify='space-around'>
+								justifyContent='space-around'>
 								<Grid item xs={12} sm={8} md={5}>
 									<Typography align='center' variant='h5'>
 										Yleinen ajankäyttö
