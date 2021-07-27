@@ -24,6 +24,11 @@ const CheckBox = ({ question }) => {
 		})
 		handleInputChange(question.id, updatedValues)
 	}
+
+	const isDisabled = () => {
+		
+	}
+
 	return (
 		<Box mt={2}>
 			<FormGroup>
@@ -40,6 +45,7 @@ const CheckBox = ({ question }) => {
 										(answer) => answer.id === choice.id
 									).isChecked || false
 								}
+								disabled={}
 								name={choice.text}
 								inputProps={{ 'aria-label': choice.text }}
 								color='primary'
