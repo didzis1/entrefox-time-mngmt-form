@@ -81,7 +81,7 @@ const SummaryContent = () => {
 								<Grid item xs={12} sm={8} md={5}>
 									<Box mt={2} mb={2}>
 										<Typography align='center' variant='h5'>
-											Haluttu ajanvietto tulevaisuudessa
+											Aikasi tulevaisuudessa
 										</Typography>
 										<PieChart answer={answers[5]} />
 									</Box>
@@ -107,7 +107,7 @@ const SummaryContent = () => {
 							<Typography>
 								Olet vastannut, että haluat muutosta
 								{typeof answers[4] === 'boolean'
-									? ', mutta et ole asettanut muutoksen tavoitepäivän.'
+									? ', mutta et ole asettanut muutoksen tavoitepäivän'
 									: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
 											new Date(answers[4])
 									  )}`}
@@ -156,7 +156,7 @@ const SummaryContent = () => {
 									</Grid>
 									<Grid item xs={12} sm={8} md={5}>
 										<Typography align='center' variant='h5'>
-											Haluttu ajanvietto tulevaisuudessa
+											Aikasi tulevaisuudessa
 										</Typography>
 										<PieChart answer={answers[5]} />
 									</Grid>
@@ -283,7 +283,7 @@ const SummaryContent = () => {
 						</Box>
 						<Box className='html2pdf__page-break'></Box>
 
-						<Box mt={8} id='last-pdf-page' className='pdf_page'>
+						<Box mt={2} id='last-pdf-page' className='pdf_page'>
 							<Box my={2}>
 								<Typography>
 									Olet vastannut, että haluat muutosta
@@ -291,7 +291,7 @@ const SummaryContent = () => {
 									{typeof answers[9] === 'boolean'
 										? ', mutta et ole asettanut muutoksen tavoitepäivän'
 										: ` ja asettanut muutoksen tavoitepäiväksi ${dateToYMD(
-												new Date(answers[4])
+												new Date(answers[9])
 										  )}`}
 									. Aloita kartoittamalla tilanne: kirjaa
 									viikon aikana ylös, mihin kaikkeen käytät

@@ -36,11 +36,18 @@ const Summary = ({ handleFormSubmit }) => {
 		// Select and clone elements that are to be edited for the PDF
 		// eslint-disable-next-line no-unused-vars
 		let pieCharts = document.querySelectorAll('#pie-chart')
-		const pieContainer = document.getElementById('pie-container')
-		let newImage = new Image()
-		newImage.id = 'pie-rendered-image'
-		newImage.src = pieCharts[0].toDataURL()
-		pieContainer.appendChild(newImage)
+		//const pieContainer = document.getElementById('pie-container')
+
+		// let pieImages = []
+		// pieCharts.forEach(() => {
+		// 	pieImages.push(new Image())
+		// })
+		// pieImages.forEach((pieImage, index) => {
+		// 	pieImage.id = 'pie-rendered-image'
+		// 	pieImage.src = pieCharts[index].toDataURL()
+		// })
+		// pieContainer.appendChild(pieImages[0])
+		// pieContainer.appendChild(pieImages[1])
 
 		const element = document.getElementById('summary').cloneNode(true)
 		const singlePage = document.querySelectorAll('.pdf_page')
@@ -79,7 +86,6 @@ const Summary = ({ handleFormSubmit }) => {
 		element.style.backgroundImage = ''
 		element.style.backgroundSize = ''
 		singlePage.forEach((page) => (page.style.margin = 'auto'))
-		pieContainer.removeChild(document.getElementById('pie-rendered-image'))
 	}
 
 	// Get first two conditions
