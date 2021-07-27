@@ -34,12 +34,19 @@ const Summary = ({ handleFormSubmit }) => {
 		await scrollToTop(false)
 
 		// Select and clone elements that are to be edited for the PDF
+		// eslint-disable-next-line no-unused-vars
+		let pieCharts = document.querySelectorAll('#pie-chart')
+		const pieContainer = document.getElementById('pie-container')
+		let newImage = new Image()
+		newImage.id = 'pie-rendered-image'
+		newImage.src = pieCharts[0].toDataURL()
+		pieContainer.appendChild(newImage)
+
 		const element = document.getElementById('summary').cloneNode(true)
 		const singlePage = document.querySelectorAll('.pdf_page')
 		const lastPage = document
 			.getElementById('last-pdf-page')
 			.cloneNode(true)
-
 		// Style settings for cloned elements
 		// PDF page size: [215.9mm x 279.4mm]
 		lastPage.style.height = '972px'
@@ -72,6 +79,7 @@ const Summary = ({ handleFormSubmit }) => {
 		element.style.backgroundImage = ''
 		element.style.backgroundSize = ''
 		singlePage.forEach((page) => (page.style.margin = 'auto'))
+		pieContainer.removeChild(document.getElementById('pie-rendered-image'))
 	}
 
 	// Get first two conditions
@@ -108,7 +116,6 @@ const Summary = ({ handleFormSubmit }) => {
 						Olet käynyt kehityskeskustelun {currentDate}.
 					</Typography>
 				</Box>
-
 				<Divider data-html2canvas-ignore='true' />
 
 				{/* Manual page-break for the PDF generation */}
@@ -123,7 +130,7 @@ const Summary = ({ handleFormSubmit }) => {
 				<Grid
 					container
 					direction='row'
-					justify='space-between'
+					justifyContent='space-between'
 					alignItems='center'>
 					<Grid item>
 						<Box my={1}>

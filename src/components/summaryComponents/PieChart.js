@@ -29,8 +29,8 @@ const PieChart = ({ answer }) => {
 		}
 
 		return (
-			<Box>
-				<Pie data={data} />
+			<Box id='pie-container'>
+				<Pie id='pie-chart' data={data} />
 			</Box>
 		)
 	}
