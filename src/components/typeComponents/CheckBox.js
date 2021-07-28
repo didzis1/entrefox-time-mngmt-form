@@ -25,8 +25,31 @@ const CheckBox = ({ question }) => {
 		handleInputChange(question.id, updatedValues)
 	}
 
-	const isDisabled = () => {
-		
+	const isDisabled = (id) => {
+		// Only the last option needs to be disabled
+		// Last option is disabled if any other option is checked
+		const checkedValues = currentValues.value.filter(
+			(values) => values.isChecked
+		)
+		if (checkedValues.find((checkbox) => checkbox.id !== id)) {
+			// Uncheck "En suunnittele" checkbox
+			if (checkedValues.find((checkbox) => checkbox.id === id)) {
+				const updatedValues = currentValues.value.map((answer) => {
+					return answer.id === id
+						? {
+								...answer,
+								isChecked: false
+						  }
+						: answer
+				})
+				// Dispatch to update isChecked for last option
+				handleInputChange(question.id, updatedValues)
+			}
+			// Disable "En suunnittele" checkbox
+			return true
+		}
+		// Not disabled if there are no checked checkboxes
+		return false
 	}
 
 	return (
@@ -45,7 +68,11 @@ const CheckBox = ({ question }) => {
 										(answer) => answer.id === choice.id
 									).isChecked || false
 								}
-								disabled={}
+								disabled={
+									choice.id === 6
+										? isDisabled(choice.id)
+										: false
+								}
 								name={choice.text}
 								inputProps={{ 'aria-label': choice.text }}
 								color='primary'
