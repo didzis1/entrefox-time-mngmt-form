@@ -29,7 +29,11 @@ const PieChart = ({ answer }) => {
 		}
 
 		return (
-			<Box id='pie-container'>
+			<Box
+				id='pie-container'
+				align='center'
+				mx={'auto'}
+				style={{ maxWidth: '300px' }}>
 				<Pie id='pie-chart' data={data} />
 			</Box>
 		)
