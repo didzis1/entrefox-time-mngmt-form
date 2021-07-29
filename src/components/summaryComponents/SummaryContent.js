@@ -31,18 +31,26 @@ const SummaryContent = () => {
 		)
 	}
 
-	const questionEleven = (answer) => {
-		const toDisplay = {
-			1: 'päivätasolla',
-			2: 'viikkotasolla',
-			3: 'kvartaalitasolla',
-			4: 'vuositasolla',
-			5: 'suunnittelet töitä fiiliksen mukaan',
-			6: 'et suunnittele. Teet työtehtäviä sitä mukaan, kun niitä ilmaantuu'
-		}
-		if (answer.length === 1) {
-			console.log(toDisplay[answer[0].id])
-			return toDisplay[answer[0].id]
+	const optionalAnswers = {
+		1: answers[6].value.find((answer) => answer.id === 8)?.textAnswer.text,
+		2: answers[10].value.find((answer) => answer.id === 8)?.textAnswer.text
+	}
+
+	// Format sentence for answer 11
+	const answerEleven = () => {
+		//words.slice(0, -1).join(', ') + ' and ' + words.splice(-1)
+		const mappedAnswers = answers[11].map((answer) => answer.text)
+
+		if (answers[11].length === 1) {
+			return mappedAnswers
+		} else if (answers[11].length === 2) {
+			return mappedAnswers.join(' ja ')
+		} else if (answers[11].length >= 3) {
+			return (
+				mappedAnswers.slice(0, -1).join(', ') +
+				' ja ' +
+				mappedAnswers.splice(-1)
+			)
 		}
 	}
 
@@ -66,27 +74,14 @@ const SummaryContent = () => {
 							</Typography>
 						</Box>
 						<Box my={3}>
-							<Grid
-								container
-								direction='row'
-								justifyContent='space-around'>
-								<Grid item xs={12} sm={8} md={5}>
-									<Box mt={2} mb={2}>
-										<Typography align='center' variant='h5'>
-											Aikasi nykyhetkellä
-										</Typography>
-										<PieChart answer={answers[1]} />
-									</Box>
-								</Grid>
-								<Grid item xs={12} sm={8} md={5}>
-									<Box mt={2} mb={2}>
-										<Typography align='center' variant='h5'>
-											Aikasi tulevaisuudessa
-										</Typography>
-										<PieChart answer={answers[5]} />
-									</Box>
-								</Grid>
-							</Grid>
+							<Typography align='center' variant='h5'>
+								Aikasi nykyhetkellä
+							</Typography>
+							<PieChart answer={answers[1]} />
+							<Typography align='center' variant='h5'>
+								Aikasi tulevaisuudessa
+							</Typography>
+							<PieChart answer={answers[5]} />
 						</Box>
 						<Box>
 							<Typography>
@@ -103,6 +98,7 @@ const SummaryContent = () => {
 								rehellinen itsellesi.
 							</Typography>
 						</Box>
+						<Box className='html2pdf__page-break'></Box>
 						<Box mt={2} mb={10}>
 							<Typography>
 								Olet vastannut, että haluat muutosta
@@ -147,14 +143,14 @@ const SummaryContent = () => {
 								<Grid
 									container
 									direction='row'
-									justifyContent='space-around'>
-									<Grid item xs={12} sm={8} md={5}>
+									justify='space-around'>
+									<Grid item xs={12}>
 										<Typography align='center' variant='h5'>
 											Aikasi nykyhetkellä
 										</Typography>
 										<PieChart answer={answers[1]} />
 									</Grid>
-									<Grid item xs={12} sm={8} md={5}>
+									<Grid item xs={12}>
 										<Typography align='center' variant='h5'>
 											Aikasi tulevaisuudessa
 										</Typography>
@@ -213,7 +209,7 @@ const SummaryContent = () => {
 							<Grid
 								container
 								direction='row'
-								justifyContent='space-around'>
+								justify='space-around'>
 								<Grid item xs={12} sm={8} md={5}>
 									<Typography align='center' variant='h5'>
 										Yleinen ajankäyttö
@@ -261,8 +257,22 @@ const SummaryContent = () => {
 									future={answers[10]}
 								/>
 							</Box>
-
 							<Box>
+								<Typography>
+									{optionalAnswers[1]
+										? 'Nykyinen muu toiminta: ' +
+										  optionalAnswers[1]
+										: null}
+								</Typography>
+								<Typography>
+									{optionalAnswers[2]
+										? 'Tulevaisuuden muu toimintasi: ' +
+										  optionalAnswers[2]
+										: null}
+								</Typography>
+							</Box>
+
+							<Box mt={2}>
 								<Typography>
 									Nyt voisi olla priorisoinnin tai töiden
 									uudelleen järjestämisen paikka. Mieti,
@@ -344,10 +354,14 @@ const SummaryContent = () => {
 							<Box my={2}>
 								<Typography>
 									Vastasit myös, että suunnittelet
-									työtehtäviäsi tällä hetkellä [kysymys 11
-									multiple choices valitut arvot ]. Kysy
-									itseltäsi, onko tämä suunnittelun aikaväli
-									riittävä ja tukeeko nykyinen tapasi
+									työtehtäviäsi tällä hetkellä näin:{' '}
+									{answerEleven()}.
+								</Typography>
+							</Box>
+							<Box my={2}>
+								<Typography>
+									Kysy itseltäsi, onko tämä suunnittelun
+									aikaväli riittävä ja tukeeko nykyinen tapasi
 									suunnitella haluamaasi muutosta.
 								</Typography>
 							</Box>
@@ -445,10 +459,10 @@ const SummaryContent = () => {
 						</Typography>
 						<br />
 						<Typography>
-							Vastasit myös, että suunnittelet työtehtäviäsi tällä
-							hetkellä [kysymys 11 valitut arvot ]. Kysy
-							itseltäsi, onko tämä suunnittelun aikaväli sinulle
-							ja pohtimallesi muutokselle sopiva.
+							Vastasit myös, työsuunnittelustasi näin: [kysymys 11
+							valitut arvot ]. Kysy itseltäsi, onko tämä
+							suunnittelun aikaväli sinulle ja pohtimallesi
+							muutokselle sopiva.
 						</Typography>
 						<Box my={3}>
 							<Divider data-html2canvas-ignore='true' />
@@ -481,13 +495,12 @@ const SummaryContent = () => {
 						</Typography>
 						<br />
 						<Typography>
-							Vastasit, että suunnittelet ajankäyttöä työssäsi{' '}
-							{questionEleven(answers[11])}. Kysy itseltäsi onko
-							tämä mielestäsi toimiva ratkaisu tällä hetkellä ja
-							pidemmällä aikavälillä. Pitkän aikavälin suunnittelu
-							on hyvä palauttaa niihin tekijöihin, mitkä ovat
-							elämässä tärkeitä ja mihin haluaisit panostaa
-							enemmän.
+							Vastasit, että suunnittelet ajankäyttöä työssäsi .
+							Kysy itseltäsi onko tämä mielestäsi toimiva ratkaisu
+							tällä hetkellä ja pidemmällä aikavälillä. Pitkän
+							aikavälin suunnittelu on hyvä palauttaa niihin
+							tekijöihin, mitkä ovat elämässä tärkeitä ja mihin
+							haluaisit panostaa enemmän.
 						</Typography>
 						<Box my={3}>
 							<Divider data-html2canvas-ignore='true' />
