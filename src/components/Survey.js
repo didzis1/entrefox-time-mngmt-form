@@ -90,7 +90,7 @@ const Survey = ({
 					)}
 				</Box>
 				{/* Previous and Next buttons */}
-				<Grid container direction='row' justifyContent='space-between'>
+				<Grid container direction='row' justify='space-between'>
 					<Grid item>
 						<Box>{handlePreviousButton()}</Box>
 					</Grid>

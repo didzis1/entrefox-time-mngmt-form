@@ -6,14 +6,14 @@ import FormContextProvider from './contexts/FormContext'
 
 import {
 	ThemeProvider,
-	createTheme,
+	createMuiTheme,
 	responsiveFontSizes
 } from '@material-ui/core/styles'
 
 import lime from '@material-ui/core/colors/lime'
 import yellow from '@material-ui/core/colors/yellow'
 
-let theme = createTheme({
+let theme = createMuiTheme({
 	palette: {
 		primary: lime,
 		secondary: yellow

@@ -133,7 +133,7 @@ const Summary = ({ handleFormSubmit }) => {
 			</Box>
 
 			<Box mt={2}>
-				<Grid container direction='row' justifyContent='space-between'>
+				<Grid container direction='row' justify='space-between'>
 					<Grid item>
 						<Box my={1}>
 							<ButtonHandler

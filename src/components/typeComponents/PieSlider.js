@@ -103,7 +103,7 @@ const PieSlider = ({ question }) => {
 								container
 								item
 								direction='row'
-								justifyContent='space-between'>
+								justify='space-between'>
 								<Grid item>
 									<Typography variant='body1'>
 										{slider.text}

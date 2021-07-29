@@ -23,7 +23,7 @@ const Footer = () => {
 					container
 					item
 					direction='row'
-					justifyContent='space-evenly'
+					justify='space-evenly'
 					alignItems='center'>
 					<Grid item xs={8} sm={5} md={4}>
 						<Box my={2} px={2}>
@@ -51,7 +51,7 @@ const Footer = () => {
 					container
 					item
 					direction='row'
-					justifyContent='space-evenly'
+					justify='space-evenly'
 					alignItems='center'>
 					<Grid item xs={6} sm={4} md={3}>
 						<Box>
@@ -72,7 +72,7 @@ const Footer = () => {
 					item
 					direction='column'
 					alignItems='center'
-					justifyContent='center'>
+					justify='center'>
 					<Grid item xs={8} sm={6}>
 						<Box my={2}>
 							<img
