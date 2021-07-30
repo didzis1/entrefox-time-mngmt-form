@@ -36,18 +36,36 @@ const Summary = ({ handleFormSubmit }) => {
 		// Select and clone elements that are to be edited for the PDF
 		// eslint-disable-next-line no-unused-vars
 		let pieCharts = document.querySelectorAll('#pie-chart')
-		//const pieContainer = document.getElementById('pie-container')
+		const pieContainer = document.querySelectorAll('#pie-container')
 
-		// let pieImages = []
-		// pieCharts.forEach(() => {
-		// 	pieImages.push(new Image())
-		// })
-		// pieImages.forEach((pieImage, index) => {
-		// 	pieImage.id = 'pie-rendered-image'
-		// 	pieImage.src = pieCharts[index].toDataURL()
-		// })
-		// pieContainer.appendChild(pieImages[0])
-		// pieContainer.appendChild(pieImages[1])
+		// Create an empty array for images
+		let pieImages = []
+
+		// For each rendered pieChart, create a new image element and push it to pieImages array
+		pieCharts.forEach(() => {
+			pieImages.push(new Image())
+		})
+
+		// For each image, add various of styles, an id and an src for the image taken from the canvas pie chart
+		pieImages.forEach((pieImage, index) => {
+			pieImage.id = 'pie-rendered-image'
+			pieImage.src = pieCharts[index].toDataURL()
+			pieImage.style.width = '300px'
+			pieImage.style.height = '300px'
+			pieImage.style.display = 'block'
+			pieImage.style.margin = 'auto'
+		})
+
+		// Add one image per one container (container that holds the PieChart canvas)
+		pieContainer.forEach((container, index) => {
+			container.appendChild(pieImages[index])
+		})
+
+		// Temporarily set PieChart to invisible so that it doesn't take empty space in the PDF
+		// This has to be done since html2pdf does not recognize canvas elements
+		pieCharts.forEach((pieChart) => {
+			pieChart.style.display = 'none'
+		})
 
 		const element = document.getElementById('summary').cloneNode(true)
 		const singlePage = document.querySelectorAll('.pdf_page')
@@ -86,10 +104,17 @@ const Summary = ({ handleFormSubmit }) => {
 		element.style.backgroundImage = ''
 		element.style.backgroundSize = ''
 		singlePage.forEach((page) => (page.style.margin = 'auto'))
-	}
 
-	// Get first two conditions
-	// Map over the function and get in the array first two texts from conditions
+		// Set PieChart back to visible
+		pieCharts.forEach((pieChart) => {
+			pieChart.style.display = ''
+		})
+
+		// Remove previously created images from the HTML
+		pieImages.forEach((pieImage) => {
+			pieImage.parentNode.removeChild(pieImage)
+		})
+	}
 
 	return (
 		<Container className={classes.survey} maxWidth='md'>
