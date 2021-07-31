@@ -37,6 +37,7 @@ const Summary = ({ handleFormSubmit }) => {
 		// eslint-disable-next-line no-unused-vars
 		let pieCharts = document.querySelectorAll('#pie-chart')
 		const pieContainer = document.querySelectorAll('#pie-container')
+		const pdfPages = document.querySelectorAll('.pdf_page')
 
 		// Create an empty array for images
 		let pieImages = []
@@ -65,6 +66,10 @@ const Summary = ({ handleFormSubmit }) => {
 		// This has to be done since html2pdf does not recognize canvas elements
 		pieCharts.forEach((pieChart) => {
 			pieChart.style.display = 'none'
+		})
+
+		pdfPages.forEach((pdfPage) => {
+			pdfPage.style.paddingTop = '30px'
 		})
 
 		const element = document.getElementById('summary').cloneNode(true)
@@ -113,6 +118,10 @@ const Summary = ({ handleFormSubmit }) => {
 		// Remove previously created images from the HTML
 		pieImages.forEach((pieImage) => {
 			pieImage.parentNode.removeChild(pieImage)
+		})
+
+		pdfPages.forEach((pdfPage) => {
+			pdfPage.style.paddingTop = 'auto'
 		})
 	}
 
