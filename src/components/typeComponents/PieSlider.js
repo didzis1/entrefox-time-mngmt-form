@@ -104,19 +104,22 @@ const PieSlider = ({ question }) => {
 								item
 								direction='row'
 								justify='space-between'>
-								<Grid item>
+								<Grid item xs={11}>
 									<Typography variant='body1'>
 										{slider.text}
 									</Typography>
 								</Grid>
-								<Grid item>
-									<Typography variant='body1'>
-										{
-											sliderValues?.find(
-												(val) => val.id === slider.id
-											).range
-										}
-									</Typography>
+								<Grid item xs={1}>
+									<Box px={1}>
+										<Typography variant='body1'>
+											{
+												sliderValues?.find(
+													(val) =>
+														val.id === slider.id
+												).range
+											}
+										</Typography>
+									</Box>
 								</Grid>
 							</Grid>
 							<Grid item>
