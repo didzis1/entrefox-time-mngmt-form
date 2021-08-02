@@ -68,7 +68,7 @@ const Summary = ({ handleFormSubmit }) => {
 		})
 
 		pdfPages.forEach((pdfPage) => {
-			pdfPage.style.paddingTop = '30px'
+			pdfPage.style.paddingTop = '35px'
 		})
 
 		const element = document.getElementById('summary').cloneNode(true)
@@ -121,7 +121,7 @@ const Summary = ({ handleFormSubmit }) => {
 		})
 
 		pdfPages.forEach((pdfPage) => {
-			pdfPage.style.paddingTop = 'auto'
+			pdfPage.style.paddingTop = '0px'
 		})
 	}
 
