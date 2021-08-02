@@ -3,7 +3,7 @@
 		"id": 1,
 		"questions": [
 			{
-				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin? (24h)",
+				"title": "Kuinka arvioisit aikasi jakautuvan elämän eri osa-alueiden välillä keskimäärin? (max. 24h)",
 				"description": "",
 				"sliders": [
 					{
@@ -86,7 +86,7 @@
 			"id": 4
 		},
 		{
-			"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken? (24h)",
+			"title": "Miten toivoisit aikasi jakaantuvan tulevaisuudessa eri osa-alueiden kesken? (max. 24h)",
 			"description": "",
 			"sliders": [
 				{
