@@ -34,7 +34,6 @@ const Summary = ({ handleFormSubmit }) => {
 		await scrollToTop(false)
 
 		// Select and clone elements that are to be edited for the PDF
-		// eslint-disable-next-line no-unused-vars
 		let pieCharts = document.querySelectorAll('#pie-chart')
 		const pieContainer = document.querySelectorAll('#pie-container')
 		const pdfPages = document.querySelectorAll('.pdf_page')
@@ -63,7 +62,7 @@ const Summary = ({ handleFormSubmit }) => {
 		})
 
 		// Temporarily set PieChart to invisible so that it doesn't take empty space in the PDF
-		// This has to be done since html2pdf does not recognize canvas elements
+		// This has to be done since html2pdf does not recognize canvas elements, although renders them as taken up space
 		pieCharts.forEach((pieChart) => {
 			pieChart.style.display = 'none'
 		})
@@ -85,6 +84,7 @@ const Summary = ({ handleFormSubmit }) => {
 		element.style.backgroundRepeat = 'repeat-y'
 		element.style.padding = '15px 100px 0px 100px'
 		singlePage.forEach((page) => (page.style.margin = '25px auto'))
+
 		// Options for the html2pdf rendering
 		const opt = {
 			filename: 'entrefox_summary.pdf',
@@ -103,7 +103,7 @@ const Summary = ({ handleFormSubmit }) => {
 		// Generate the PDF from the defined options
 		window.open(await html2pdf().from(element).set(opt).output('bloburl'))
 
-		// Change the padding back after PDF has been generated
+		// Change the styling back to the original after the PDF is finished rendering
 		lastPage.style.height = 'auto'
 		element.style.padding = ''
 		element.style.backgroundImage = ''
@@ -132,8 +132,9 @@ const Summary = ({ handleFormSubmit }) => {
 				colors={{ bg: '#cddc39', bgHover: '#c0ca33' }}
 				handlePagination={handleFormSubmit}
 			/>
+
+			{/* PDF starts here */}
 			<Box id='summary'>
-				{/* Header with EntreFox logo */}
 				<Box my={5}>
 					<Typography
 						component='h1'
@@ -165,6 +166,7 @@ const Summary = ({ handleFormSubmit }) => {
 					<SummaryContent />
 				</Box>
 			</Box>
+			{/* PDF ends here */}
 
 			<Box mt={2}>
 				<Grid container direction='row' justify='space-between'>
