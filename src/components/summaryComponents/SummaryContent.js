@@ -39,7 +39,9 @@ const SummaryContent = () => {
 	// Format sentence for answer 11
 	const answerEleven = () => {
 		//words.slice(0, -1).join(', ') + ' and ' + words.splice(-1)
-		const mappedAnswers = answers[11].map((answer) => answer.text)
+		let mappedAnswers = answers[11].map((answer, index) =>
+			index >= 1 ? answer.text.toLowerCase() : answer.text
+		)
 
 		if (answers[11].length === 1) {
 			return mappedAnswers
@@ -384,7 +386,12 @@ const SummaryContent = () => {
 								<Typography>
 									Vastasit myös, että suunnittelet
 									työtehtäviäsi tällä hetkellä näin:{' '}
-									{answerEleven()}.
+									<Typography
+										component='span'
+										color='primary'
+										style={{ fontWeight: 600 }}>
+										{answerEleven()}.
+									</Typography>{' '}
 								</Typography>
 							</Box>
 							<Box my={2}>
@@ -489,47 +496,53 @@ const SummaryContent = () => {
 								<Typography>
 									Välitavoitteiden asettaminen ja
 									apuvälineiden käyttö tukee muutosta. Kokeile
+									neljän kohdan tehtävälistaa, joka
+									viikoittain käytettynä säästää aikaasi ja
+									parantaa töiden hallittavuutta:{' '}
 									<a
 										href='https://www.entrefox.fi/arjen-ajanhallinta/'
 										target='blank'
 										className={classes.linkTag}>
-										{' '}
-										neljän kohdan tehtävälistaa
+										https://www.entrefox.fi/arjen-ajanhallinta/
 									</a>
-									, joka viikoittain käytettynä säästää
-									aikaasi ja parantaa töiden hallittavuutta.
-									Hyödynnä kalenteria ja sovelluksia, joissa
+									. Hyödynnä kalenteria ja sovelluksia, joissa
 									voit ajastaa työtehtäviä. Näitä ovat muun
-									muassa{' '}
+									muassa Todoist{' '}
 									<a
 										href='https://todoist.com/app/today'
 										target='blank'
 										className={classes.linkTag}>
-										Todoist
+										https://todoist.com/app/today
 									</a>{' '}
-									ja{' '}
+									ja Keep My Notes{' '}
 									<a
 										href='https://www.kitetech.co/keepmynotes'
 										target='blank'
 										className={classes.linkTag}>
-										Keep My Notes
-									</a>
-									. Juttele muiden samantapaista työtä
-									tekevien kanssa siitä, miten he käyttävät
-									työaikansa. Tämä voi olla ystävä tai
-									hengenheimolainen, jolta saat vertaistukea,
-									tai vaihtoehtoisesti kokeneempi ’coachi’,
-									jolta saat kommentteja ja ideoita
-									ajankäyttöösi.
+										https://www.kitetech.co/keepmynotes .
+									</a>{' '}
+									Juttele muiden samantapaista työtä tekevien
+									kanssa siitä, miten he käyttävät työaikansa.
+									Tämä voi olla ystävä tai hengenheimolainen,
+									jolta saat vertaistukea, tai
+									vaihtoehtoisesti kokeneempi ’coachi’, jolta
+									saat kommentteja ja ideoita ajankäyttöösi.
 								</Typography>
 							</Box>
 
 							<Box my={2}>
 								<Typography>
-									Vastasit myös, työsuunnittelustasi näin:{' '}
-									{answerEleven()}. Kysy itseltäsi, onko tämä
-									suunnittelun aikaväli sinulle ja
-									pohtimallesi muutokselle sopiva.
+									Vastasit myös, että suunnittelet
+									työtehtäviäsi tällä hetkellä näin:{' '}
+									<Typography
+										component='span'
+										color='primary'
+										style={{ fontWeight: 600 }}>
+										{answerEleven()}
+									</Typography>
+									. Kysy itseltäsi, onko tämä suunnittelun
+									aikaväli sinulle ja pohtimallesi muutokselle
+									sopiva.
 								</Typography>
 							</Box>
 						</Box>
@@ -582,10 +595,17 @@ const SummaryContent = () => {
 
 							<Box my={2}>
 								<Typography>
-									Vastasit, että suunnittelet ajankäyttöä
-									työssäsi . Kysy itseltäsi onko tämä
-									mielestäsi toimiva ratkaisu tällä hetkellä
-									ja pidemmällä aikavälillä. Pitkän aikavälin
+									Vastasit myös, että suunnittelet
+									työtehtäviäsi tällä hetkellä näin:{' '}
+									<Typography
+										component='span'
+										color='primary'
+										style={{ fontWeight: 600 }}>
+										{answerEleven()}.
+									</Typography>
+									{''}Kysy itseltäsi onko tämä mielestäsi
+									toimiva ratkaisu tällä hetkellä ja
+									pidemmällä aikavälillä. Pitkän aikavälin
 									suunnittelu on hyvä palauttaa niihin
 									tekijöihin, mitkä ovat elämässä tärkeitä ja
 									mihin haluaisit panostaa enemmän.
